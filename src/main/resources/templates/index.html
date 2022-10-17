@@ -195,12 +195,12 @@
                                                             <div class="collapse navbar-collapse no-padding">
                                                                 <ul id="primary-menu"
                                                                     class="nav navbar-nav megamenu effect1 ">
-                                                                    <li class="menu-item-65 aligned-left"><a href="index.htm">ՏՈՒՆ</a></li>
-                                                                    <li class="menu-item-65 aligned-left"><a href="blog/index.htm">ԲԼՈԳ</a></li>
+                                                                    <li class="menu-item-65 aligned-left" ><a href="index.htm" th:text="#{menu.home}">HOME</a></li>
+                                                                    <li class="menu-item-65 aligned-left"><a href="blog/index.htm" th:text="#{menu.blog}">BLOG</a></li>
                                                                     <li class="menu-item-64 aligned-left"><a
-                                                                            href="about/index.htm">ՄԵՐ ՄԱՍԻՆ</a></li>
+                                                                            href="about/index.htm" th:text="#{menu.about}">ABOUT</a></li>
                                                                     <li class="menu-item-66 aligned-left"><a
-                                                                            href="contact/index.htm">ՀԵՏԱԴԱՐՁ ԿԱՊ</a></li>
+                                                                            href="contact/index.htm" th:text="#{menu.contack}">CONTACT</a></li>
 
                                                                 </ul>
                                                             </div>
@@ -222,17 +222,17 @@
                                                     <div class="account-login">
                                                         <ul class="login-account">
                                                             <li>
-                                                                <a href="#"><img src="wp-content/uploads/2020/08/hy drosh.jpg"></a>
+                                                                <a href="?lang=hy"><img src="wp-content/uploads/2020/08/hy drosh.jpg"></a>
 
                                                             </li>
                                                             <li>
-                                                                <a href="#"><img src="wp-content/uploads/2020/08/ru drosh.jpg"></a>
+                                                                <a href="?lang=ru"><img src="wp-content/uploads/2020/08/ru drosh.jpg"></a>
                                                             </li>
                                                             <li>
-                                                                <a href="#"><img src="wp-content/uploads/2020/08/us drosh.jpg"></a>
+                                                                <a href="?lang"><img src="wp-content/uploads/2020/08/us drosh.jpg"></a>
                                                             </li>
                                                             <li><i class="fas fa-user-circle text-green"></i><a
-                                                                    href="my-account/index.htm" class="wel-user">Մուտք</a></li>
+                                                                    href="my-account/index.htm" class="wel-user" th:text="#{main.signin}">SIGN IN</a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -312,7 +312,7 @@
                                                                                      data-tax="ba_destinations">
 
                                                                                     <div class="add_ids_title">
-                                                                                        <div class="add_ids_title_value">
+                                                                                        <div class="add_ids_title_value" th:text="#{main.searche}">
                                                                                             Բոլոր ուղղությունները
                                                                                         </div>
                                                                                         <i class="fas fa-chevron-down"></i>
@@ -346,12 +346,12 @@
                                                                                 <div class="search-date is-active"
                                                                                      data-inputfield="1" tabindex="0"
                                                                                      data-active-0="1"
-                                                                                     data-title-0="Մուտք">
+                                                                                     data-title-0="Date Form">
                                                                                     <i class="ti-calendar "></i><input
                                                                                         type="text" class="search_date"
                                                                                         id="date_from" name="date_from"
                                                                                         value=""
-                                                                                        placeholder="Մուտք">
+                                                                                        th:placeholder="#{main.datefrom}"/>
                                                                                 </div>
                                                                                 <div class="input_select_field input_select_field_time_from  is-active"
                                                                                      data-name="time_from"
