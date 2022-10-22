@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg"
+<html lang="en" xmlns:th="https://www.thymeleaf.org" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg"
       data-sidebar-image="none" data-preloader="disable">
 
 <head>
 
     <meta charset="utf-8">
-    <title>Listjs | Velzon - Admin & Dashboard Template</title>
+    <title>Admin & Dashboard Template</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description">
     <meta content="Themesbrand" name="author">
@@ -79,10 +79,11 @@
                                                 <th class="sort" data-sort="customer_name">ID ATTRIBUTE</th>
                                                 <th class="sort" data-sort="email">NAME</th>
 
-                                                <th class="sort" data-sort="action">Action</th>
+
                                             </tr>
                                             </thead>
-                                            <tbody class="list form-check-all"><tr>
+                                            <tbody class="list form-check-all">
+                                            <tr th:each="attribute:${allAttribute}">
                                                 <th scope="row">
                                                     <div class="form-check">
                                                         <input class="form-check-input" type="checkbox" name="chk_child" value="option1">
@@ -90,11 +91,9 @@
                                                 </th>
                                                 <td class="id" style="display:none;"><a href="javascript:void(0);" class="fw-medium link-primary">#VZ2101</a>
                                                 </td>
-                                                <td class="customer_name">1</td>
-                                                <td class="email">WiFi</td>
+                                                <td th:text="${attribute.id}" class="customer_name"></td>
+                                                <td th:text="${attribute.name}" class="email"></td>
 
-                                                <td class="status"><span class="badge badge-soft-success text-uppercase">Active</span>
-                                                </td>
                                                 <td>
                                                     <div class="d-flex gap-2">
                                                         <div class="edit">
@@ -151,31 +150,17 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                                         id="close-modal"></button>
                             </div>
-                            <form>
+                            <form action="attribute/add" method="post">
                                 <div class="modal-body">
 
-                                    <div class="mb-3" id="modal-id" style="display: none;">
-                                        <label for="id-field" class="form-label">ID</label>
-                                        <input type="text" id="id-field" class="form-control" placeholder="ID"
-                                               readonly="">
-                                    </div>
+
 
                                     <div class="mb-3">
-                                        <label for="customername-field" class="form-label">Customer Name</label>
-                                        <input type="text" id="customername-field" class="form-control"
+                                        <label for="customername-field" class="form-label">Attribute Name</label>
+                                        <input type="text" id="customername-field" name="name" class="form-control"
                                                placeholder="Enter Name" required="">
                                     </div>
 
-
-                                    <div>
-                                        <label for="status-field" class="form-label">Status</label>
-                                        <select class="form-control" data-trigger="" name="status-field"
-                                                id="status-field">
-                                            <option value="">Status</option>
-                                            <option value="Active">Active</option>
-                                            <option value="Block">Block</option>
-                                        </select>
-                                    </div>
                                 </div>
                                 <div class="modal-footer">
                                     <div class="hstack gap-2 justify-content-end">
