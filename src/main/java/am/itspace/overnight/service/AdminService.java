@@ -35,4 +35,8 @@ public class AdminService {
     public List<Attribute> findAllAttribute() {
         return attributeRepository.findAll();
     }
+
+    public void deleteAttributeById(int id) {
+        attributeRepository.deleteById(id);
+    }
 }
