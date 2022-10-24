@@ -14,7 +14,7 @@ import java.util.Optional;
 public class CityVillageService {
     private final CityVillageRepository cityVillageRepository;
 
-    public void addCityVilage(CityVillage cityVillage) {
+    public void addCityVillage(CityVillage cityVillage) {
         cityVillageRepository.save(cityVillage);
     }
 
@@ -23,20 +23,20 @@ public class CityVillageService {
         return cityVillageList;
     }
 
-    public Optional<CityVillage> getById(int cityVilageId) {
-        return cityVillageRepository.findById(cityVilageId);
+    public Optional<CityVillage> getById(int cityVillageId) {
+        return cityVillageRepository.findById(cityVillageId);
     }
 
-    public void updateCityVilage(int cityVilageId, String cityVilageName, Region region) {
-        Optional<CityVillage> cityVilageById = cityVillageRepository.findById(cityVilageId);
-        if (cityVilageById.isPresent()) {
-            CityVillage cityVillage = cityVilageById.get();
-            cityVillage.setName(cityVilageName);
+    public void updateCityVillage(int cityVillageId, String cityVillageName, Region region) {
+        Optional<CityVillage> cityVillageById = cityVillageRepository.findById(cityVillageId);
+        if (cityVillageById.isPresent()) {
+            CityVillage cityVillage = cityVillageById.get();
+            cityVillage.setName(cityVillageName);
             cityVillage.setRegion(region);
         }
     }
 
-    public void deleteById(int cityVilageId) {
-        cityVillageRepository.deleteById(cityVilageId);
+    public void deleteById(int cityVillageId) {
+        cityVillageRepository.deleteById(cityVillageId);
     }
 }

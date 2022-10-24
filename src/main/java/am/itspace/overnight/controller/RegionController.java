@@ -27,9 +27,9 @@ public class RegionController {
     public String getAllRegions(ModelMap modelMap) {
         List<Region> regions = regionService.getAll();
         modelMap.addAttribute("regions", regions);
-        return "/regions";
+        return "admin/adminPageRegion";
     }
-    @GetMapping("/region")
+    @GetMapping("/region/id")
     public String getRegionById(@RequestParam int regionId, ModelMap modelMap) {
         Optional<Region> region=regionService.getById(regionId);
         modelMap.addAttribute("region", region);
