@@ -12,13 +12,12 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "product_galerry")
-public class ProductGalerry {
+@Table(name = "city_vilage")
+public class CityVillage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String pictureUrl;
+    private String name;
     @ManyToOne
-    private Product product;
-
+    private Region region;
 }

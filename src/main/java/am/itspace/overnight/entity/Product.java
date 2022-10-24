@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -31,6 +30,6 @@ public class Product {
     @ManyToOne
     private User user;
     @ManyToOne
-    private CityVilage cityVilage;
+    private CityVillage cityVillage;
     private int ratingUserCount;
 }
