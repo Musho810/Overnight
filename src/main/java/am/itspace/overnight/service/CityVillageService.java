@@ -14,7 +14,7 @@ import java.util.Optional;
 public class CityVillageService {
     private final CityVillageRepository cityVillageRepository;
 
-    public void addCityVilage(CityVillage cityVillage) {
+    public void addCityVillage(CityVillage cityVillage) {
         cityVillageRepository.save(cityVillage);
     }
 
@@ -27,7 +27,7 @@ public class CityVillageService {
         return cityVillageRepository.findById(cityVilageId);
     }
 
-    public void updateCityVilage(int cityVilageId, String cityVilageName, Region region) {
+    public void updateCityVillage(int cityVilageId, String cityVilageName, Region region) {
         Optional<CityVillage> cityVilageById = cityVillageRepository.findById(cityVilageId);
         if (cityVilageById.isPresent()) {
             CityVillage cityVillage = cityVilageById.get();
