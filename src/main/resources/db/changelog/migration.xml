@@ -7,11 +7,7 @@
    http://www.liquibase.org/xml/ns/dbchangelog
    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
-    <changeSet author="Gevor" id="someUniqueId">
-<!--        <addColumn tableName="users">-->
-<!--            <column name="address" type="varchar(255)" />-->
-<!--        </addColumn>-->
-    </changeSet>
+
 
 
 </databaseChangeLog>
