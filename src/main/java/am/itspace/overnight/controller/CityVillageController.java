@@ -15,33 +15,33 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class CityVillageController {
     private final CityVillageService cityVillageService;
-    @PostMapping("/cityVilage/add")
-    public String addCityVilage(@ModelAttribute CityVillage cityVillage) {
-        cityVillageService.addCityVilage(cityVillage);
-        return "redirect:/cityVilagies";
+    @PostMapping("/cityvillage/add")
+    public String addCityvillage(@ModelAttribute CityVillage cityVillage) {
+        cityVillageService.addCityVillage(cityVillage);
+        return "redirect:/cityvillage";
     }
-    @GetMapping("/cityVilage")
-    public String getAllCityVilage(ModelMap modelMap) {
+    @GetMapping("/cityvillage")
+    public String getAllCityvillage(ModelMap modelMap) {
         List<CityVillage> cityVillages = cityVillageService.getAll();
-        modelMap.addAttribute("cityVilages", cityVillages);
-        return "/cityVilagies";
+        modelMap.addAttribute("cityvillages", cityVillages);
+        return "cityvillage";
     }
-    @GetMapping("/cityVilage")
-    public String getCityVilageById(@RequestParam int cityVilageId, ModelMap modelMap) {
-        Optional<CityVillage> cityVilage= cityVillageService.getById(cityVilageId);
-        modelMap.addAttribute("cityVilage", cityVilage);
-        return "/cityVilagies";
+    @GetMapping("/cityvillage/id")
+    public String getCityvillageById(@RequestParam ("cityvillageId") int cityvillageId, ModelMap modelMap) {
+        Optional<CityVillage> cityvillage= cityVillageService.getById(cityvillageId);
+        modelMap.addAttribute("cityvillage", cityvillage);
+        return "cityvillage";
     }
-    @PostMapping("/cityVilage/update")
-    public String updateCityVilage (@RequestParam("cityVilageId") int cityVilageId,
-                                @RequestParam("cityVilageName") String cityVilageName,
+    @PostMapping("/cityvillage/update")
+    public String updateCityvillage (@RequestParam("cityvillageId") int cityvillageId,
+                                @RequestParam("cityvillageName") String cityvillageName,
                                 @RequestParam("regionId") Region region){
-        cityVillageService.updateCityVilage(cityVilageId,cityVilageName,region);
-        return "redirect:/cityVilagies";
+        cityVillageService.updateCityVillage(cityvillageId,cityvillageName,region);
+        return "redirect:/cityvillage";
     }
-    @GetMapping("/cityVilage/delete")
-    public String deleteCityVilage(@RequestParam("cityVilageId") int cityVilageId) {
-        cityVillageService.deleteById(cityVilageId);
-        return "redirect:/cityVilagies";
+    @GetMapping("/cityvillage/delete")
+    public String deleteCityvillage(@RequestParam("cityvillageId") int cityvillageId) {
+        cityVillageService.deleteById(cityvillageId);
+        return "redirect:/cityvillage";
     }
 }
