@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org" data-layout="vertical" data-topbar="light" data-sidebar="dark"
       data-sidebar-size="lg"
       data-sidebar-image="none" data-preloader="disable">
@@ -6,7 +6,7 @@
 <head>
 
     <meta charset="utf-8">
-    <title>Admin & Dashboard Template</title>
+    <title>Listjs | Velzon - Admin & Dashboard Template</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description">
     <meta content="Themesbrand" name="author">
@@ -18,222 +18,223 @@
 <body>
 
 <!-- Begin page -->
-<div id="layout-wrapper">
 
-    <th:block th:insert="/fragmentsAdmin/fragment::header"></th:block>
-    <!-- ========== App Menu ========== -->
-    <th:block th:insert="/fragmentsAdmin/fragment::sidebar"></th:block>
 
-    <!-- ============================================================== -->
-    <!-- Start right Content here -->
-    <!-- ============================================================== -->
-    <div class="main-content">
+<th:block th:insert="/fragmentsAdmin/fragment::header"></th:block>
+<!-- ========== App Menu ========== -->
+<th:block th:insert="/fragmentsAdmin/fragment::sidebar"></th:block>
 
-        <div class="page-content">
-            <div class="container-fluid">
+<!-- ============================================================== -->
+<!-- Start right Content here -->
+<!-- ============================================================== -->
+<div class="main-content">
 
-                <!-- start page title -->
-                <div class="row">
-                    <div class="col-12">
+    <div class="page-content">
+        <div class="container-fluid">
 
-                    </div>
+            <div class="position-relative mx-n4 mt-n4">
+                <div class="profile-wid-bg profile-setting-img">
+                    <img src="assets/images/profile-bg.jpg" class="profile-wid-img" alt="">
+
                 </div>
-                <!-- end page title -->
+            </div>
 
-                <!-- Bordered Tables -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h4 class="card-title mb-0">Add, Edit &amp; Remove</h4>
-                            </div><!-- end card header -->
+            <div class="row">
+                <div class="col-xxl-3">
+                    <div class="card mt-n5">
+                        <div class="card-body p-4">
+                            <div class="text-center">
+                                <div class="profile-user position-relative d-inline-block mx-auto  mb-4">
+                                    <img src="assets/images/users/avatar-1.jpg"
+                                         class="rounded-circle avatar-xl img-thumbnail user-profile-image"
+                                         alt="user-profile-image">
+                                    <div class="avatar-xs p-0 rounded-circle profile-photo-edit">
+                                        <input id="profile-img-file-input" type="file" class="profile-img-file-input">
+                                        <label for="profile-img-file-input" class="profile-photo-edit avatar-xs">
+                                                    <span class="avatar-title rounded-circle bg-light text-body">
+                                                        <i class="ri-camera-fill"></i>
+                                                    </span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <h5 class="fs-16 mb-1" th:text="${currentUser.name+'  '+currentUser.surname}"></h5>
 
-                            <div class="card-body">
-                                <div id="customerList">
-                                    <div class="row g-4 mb-3">
-                                        <div class="col-sm-auto">
-                                            <div>
-                                                <button type="button" class="btn btn-success add-btn"
-                                                        data-bs-toggle="modal" id="create-btn"
-                                                        data-bs-target="#showModal"><i
-                                                        class="ri-add-line align-bottom me-1"></i> Add
-                                                </button>
+                            </div>
+                        </div>
+                    </div>
 
-                                            </div>
-                                        </div>
-                                        <div class="col-sm">
-                                            <div class="d-flex justify-content-sm-end">
-                                                <div class="search-box ms-2">
-                                                    <input type="text" class="form-control search"
-                                                           placeholder="Search...">
-                                                    <i class="ri-search-line search-icon"></i>
+                    <!--end card-->
+                </div>
+                <!--end col-->
+                <div class="col-xxl-9">
+                    <div class="card mt-xxl-n5">
+                        <div class="card-header">
+                            <ul class="nav nav-tabs-custom rounded card-header-tabs border-bottom-0" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link active" data-bs-toggle="tab" href="#personalDetails" role="tab"
+                                       aria-selected="true">
+                                        <i class="fas fa-home"></i> Personal Details
+                                    </a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#changePassword" role="tab"
+                                       aria-selected="false" tabindex="-1">
+                                        <i class="far fa-user"></i> Change Password
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="personalDetails" role="tabpanel">
+                                    <form action="/admin/update" method="post">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="firstnameInput" class="form-label">First Name</label>
+                                                    <input type="text" name="name" class="form-control"
+                                                           id="firstnameInput" placeholder="Enter your firstname"
+                                                           th:value="${currentUser.name}">
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="table-responsive table-card mt-3 mb-1">
-                                        <table class="table align-middle table-nowrap" id="customerTable">
-                                            <thead class="table-light">
-                                            <tr>
-                                                <th scope="col" style="width: 50px;">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" id="checkAll"
-                                                               value="option">
-                                                    </div>
-                                                </th>
-                                                <th class="sort" data-sort="customer_name">ID ATTRIBUTE</th>
-                                                <th class="sort" data-sort="email">NAME</th>
-
-
-                                            </tr>
-                                            </thead>
-                                            <tbody class="list form-check-all">
-                                            <tr th:each="attribute:${allAttribute}">
-                                                <th scope="row">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" name="chk_child"
-                                                               value="option1">
-                                                    </div>
-                                                </th>
-                                                <td class="id" style="display:none;"><a href="javascript:void(0);"
-                                                                                        class="fw-medium link-primary">#VZ2101</a>
-                                                </td>
-                                                <td th:text="${attribute.id}" class="customer_name"></td>
-                                                <td th:text="${attribute.name}" class="email"></td>
-
-                                                <td>
-                                                    <div class="d-flex gap-2">
-                                                        <div class="edit">
-                                                            <button class="btn btn-sm btn-success edit-item-btn"
-                                                                    data-bs-toggle="modal" data-bs-target="#showModal">
-                                                                Edit
-                                                            </button>
-                                                        </div>
-                                                        <div class="remove">
-                                                            <button th:id="${attribute.id}"
-                                                                    class="btn btn-sm btn-danger remove-item-btn"
-                                                                    data-bs-toggle="modal"
-                                                                    data-bs-target="#deleteRecordModal">Remove
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-                                        <div class="noresult" style="display: none;">
-                                            <div class="text-center">
-                                                <lord-icon src="https://cdn.lordicon.com/msoeawqm.json" trigger="loop"
-                                                           colors="primary:#121331,secondary:#08a88a"
-                                                           style="width:75px;height:75px"></lord-icon>
-                                                <h5 class="mt-2">Sorry! No Result Found</h5>
-                                                <p class="text-muted mb-0">We've searched more than 150+ Orders We did
-                                                    not find any orders for you search.</p>
+                                            <!--end col-->
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="lastnameInput" class="form-label">Last Name</label>
+                                                    <input type="text" name="surname" class="form-control"
+                                                           id="lastnameInput" placeholder="Enter your lastname"
+                                                           th:value="${currentUser.surname}">
+                                                </div>
                                             </div>
+                                            <!--end col-->
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="phonenumberInput" class="form-label">Phone
+                                                        Number</label>
+                                                    <input type="text" name="phoneNumber" class="form-control"
+                                                           id="phonenumberInput" placeholder="Enter your phone number"
+                                                           th:value="${currentUser.phoneNumber}">
+                                                </div>
+                                            </div>
+                                            <!--end col-->
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="emailInput" class="form-label">Email Address</label>
+                                                    <input type="email" name="email" class="form-control"
+                                                           id="emailInput" placeholder="Enter your email"
+                                                           th:value="${currentUser.email}">
+                                                </div>
+                                            </div>
+
+                                            <!--end col-->
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="designationInput" class="form-label">Status</label>
+                                                    <input type="text" name="status" class="form-control"
+                                                           id="designationInput" placeholder="Designation"
+                                                           th:value="${currentUser.status.name}">
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <input type="hidden" name="id" th:value="${currentUser.id}">
+                                            </div>
+
+                                            <!--end col-->
+                                            <div class="col-lg-12">
+                                                <div class="hstack gap-2 justify-content-end">
+                                                    <button type="submit" class="btn btn-primary">Updates</button>
+
+                                                    <button type="button" onclick="history.back()" class="btn btn-soft-success">Cancel</button>
+
+
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <h5 style="color: red" th:if="${errorMessage!=null}"
+                                                    th:text="${errorMessage}"></h5>
+                                            </div>
+                                            <!--end col-->
                                         </div>
-                                    </div>
+                                        <!--end row-->
+                                    </form>
+                                </div>
+                                <!--end tab-pane-->
+                                <div class="tab-pane" id="changePassword" role="tabpanel">
+                                    <form action="/password/change" method="post">
+                                        <div class="row g-2">
+                                            <div class="col-lg-4">
+                                                <div>
+                                                    <label for="oldpasswordInput" class="form-label">Old
+                                                        Password*</label>
+                                                    <input type="password" name="oldPassword" class="form-control"
+                                                           id="oldpasswordInput" placeholder="Enter current password">
+                                                </div>
+                                            </div>
+                                            <!--end col-->
+                                            <div class="col-lg-4">
+                                                <div>
+                                                    <label for="newpasswordInput" class="form-label">New
+                                                        Password*</label>
+                                                    <input type="password" name="newPassword" class="form-control"
+                                                           id="newpasswordInput" placeholder="Enter new password">
+                                                </div>
+                                            </div>
+                                            <!--end col-->
+                                            <div class="col-lg-4">
+                                                <div>
+                                                    <label for="confirmpasswordInput" class="form-label">Confirm
+                                                        Password*</label>
+                                                    <input type="password" name="confirmPassword" class="form-control"
+                                                           id="confirmpasswordInput" placeholder="Confirm password">
+                                                </div>
+                                            </div>
+                                            <!--end col-->
 
-                                    <div class="d-flex justify-content-end">
-                                        <div class="pagination-wrap hstack gap-2" style="display: none;">
-                                            <a class="page-item pagination-prev disabled" href="#">
-                                                Previous
-                                            </a>
-                                            <ul class="pagination listjs-pagination mb-0">
-                                                <li class="active"><a class="page" href="#" data-i="1"
-                                                                      data-page="8">1</a></li>
-                                            </ul>
-                                            <a class="page-item pagination-next disabled" href="#">
-                                                Next
-                                            </a>
+                                            <div class="col-lg-12">
+                                                <div class="text-end">
+                                                    <button type="submit" class="btn btn-success">Change Password
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <!--end col-->
                                         </div>
-                                    </div>
-                                </div>
-                            </div><!-- end card -->
-                        </div>
-                        <!-- end col -->
-                    </div>
-                    <!-- end col -->
-                </div>
-                <!-- end row -->
-
-
-                <div class="modal fade" id="showModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                     aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header bg-light p-3">
-                                <h5 class="modal-title">Add Attribute</h5>
-                                <!--                                <h5>Add Attribute</h5>-->
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                                        id="close-modal"></button>
-                            </div>
-                            <form action="attribute/add" method="post">
-                                <div class="modal-body">
-
-
-                                    <div class="mb-3">
-                                        <label for="customername-field" class="form-label">Attribute Name</label>
-                                        <input type="text" id="customername-field" name="name" class="form-control"
-                                               placeholder="Enter Name" required="">
-                                    </div>
+                                        <!--end row-->
+                                    </form>
 
                                 </div>
-                                <div class="modal-footer">
-                                    <div class="hstack gap-2 justify-content-end">
-                                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close
-                                        </button>
-                                        <button type="submit" class="btn btn-success" id="add-btn">Add Attribute
-                                        </button>
 
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Modal -->
-                <div class="modal fade zoomIn" id="deleteRecordModal" tabindex="-1" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                                        id="btn-close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="mt-2 text-center">
-
-                                    <div class="mt-4 pt-2 fs-15 mx-4 mx-sm-5">
-                                        <h4>Are you Sure ?</h4>
-                                        <p class="text-muted mx-4 mb-0">Are you Sure You want to Remove this Record
-                                            ?</p>
-                                    </div>
-                                </div>
-                                <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
-                                    <button type="button" class="btn w-sm btn-light" data-bs-dismiss="modal">Close
-                                    </button>
-                                    <a href=""
-                                            type="button" class="btn w-sm btn-danger " id="delete-record">Yes, Delete
-                                        It!
-                                    </a>
-                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!--end modal -->
-
+                <!--end col-->
             </div>
-            <!-- container-fluid -->
+            <!--end row-->
+
         </div>
-        <!-- End Page-content -->
+        <!-- container-fluid -->
+    </div><!-- End Page-content -->
 
-        <th:block th:insert="/fragmentsAdmin/fragment::footer"></th:block>
-    </div>
-    <!-- end main content-->
-
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6">
+                    <script>document.write(new Date().getFullYear())</script>
+                    2022 © Velzon.
+                </div>
+                <div class="col-sm-6">
+                    <div class="text-sm-end d-none d-sm-block">
+                        Design &amp; Develop by Themesbrand
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 </div>
+<!-- end main content-->
+
+
 <!-- END layout-wrapper -->
 
 
@@ -957,14 +958,5 @@
 
 <th:block th:insert="/fragmentsAdmin/fragment::footerImport"></th:block>
 </body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-<script>
-    $('.remove-item-btn').on("click", function () {
-        let id = $(this).attr("id")
-        $('#delete-record').attr('href', '/attribute/'+id)
-
-    })
-</script>
 
 </html>

@@ -21,13 +21,13 @@ public class RegionController {
     @PostMapping("/region/add")
     public String addRegion(@ModelAttribute Region region) {
         regionService.addRegion(region);
-        return "redirect:/regions";
+        return "redirect:/region";
     }
     @GetMapping("/region")
     public String getAllRegions(ModelMap modelMap) {
         List<Region> regions = regionService.getAll();
         modelMap.addAttribute("regions", regions);
-        return "admin/adminPageRegion";
+        return "/admin/adminPageRegion";
     }
     @GetMapping("/region/id")
     public String getRegionById(@RequestParam int regionId, ModelMap modelMap) {
