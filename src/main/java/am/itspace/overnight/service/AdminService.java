@@ -1,12 +1,12 @@
 package am.itspace.overnight.service;
 
-import am.itspace.overnight.entity.Attribute;
-import am.itspace.overnight.entity.Region;
-import am.itspace.overnight.entity.User;
+import am.itspace.overnight.entity.*;
 import am.itspace.overnight.repository.AttributeRepository;
 import am.itspace.overnight.repository.RegionRepository;
 import am.itspace.overnight.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -68,4 +68,7 @@ public class AdminService {
 
     }
 
+    public Page<User> findUsersByUserRole(String seller, Pageable pageable) {
+        return userRepository.findUserByRole(RoleUser.valueOf(seller), pageable);
+    }
 }

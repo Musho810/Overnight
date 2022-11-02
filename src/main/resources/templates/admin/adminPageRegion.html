@@ -89,7 +89,7 @@
                                             </tr>
                                             </thead>
                                             <tbody class="list form-check-all">
-                                            <tr th:each="region: ${allRegion}">
+                                            <tr th:each="region: ${regions}">
 
                                                 <th scope="row">
                                                     <div class="form-check">
@@ -104,7 +104,7 @@
                                                 <td th:text="${region.name}" class="email"></td>
                                                 <td>
                                                     <div class="remove">
-                                                        <a th:href="@{/region/delete(id=${region.id})}">
+                                                        <a th:href="@{/region/delete(regionId=${region.id})}">
                                                         <button class="btn btn-sm btn-danger remove-item-btn"
                                                                 data-bs-toggle="modal"
                                                                 data-bs-target="#deleteRecordModal">Remove
