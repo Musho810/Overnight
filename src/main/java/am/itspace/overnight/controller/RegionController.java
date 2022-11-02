@@ -44,6 +44,6 @@ public class RegionController {
     @GetMapping("/region/delete")
     public String deleteRegion(@RequestParam("regionId") int regionId) {
         regionService.deleteById(regionId);
-        return "redirect:/regions";
+        return "redirect:/region";
     }
 }
