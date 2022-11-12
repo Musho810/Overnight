@@ -53,22 +53,35 @@ public class AdminService {
     public void update(User user) {
         Optional<User> byId = userRepository.findById(user.getId());
         if (byId.isPresent()) {
-           byId.get().setName(user.getName());
-           byId.get().setSurname(user.getSurname());
-           byId.get().setEmail(user.getEmail());
-           byId.get().setPhoneNumber(user.getPhoneNumber());
-           byId.get().setStatus(user.getStatus());
+            byId.get().setName(user.getName());
+            byId.get().setSurname(user.getSurname());
+            byId.get().setEmail(user.getEmail());
+            byId.get().setPhoneNumber(user.getPhoneNumber());
+            byId.get().setStatus(user.getStatus());
 
 
             userRepository.save(byId.get());
         }
     }
-    public Optional<User> getUserByEmail(String email){
+
+    public Optional<User> getUserByEmail(String email) {
         return userRepository.findByEmail(email);
 
     }
 
-    public Page<User> findUsersByUserRole(String seller, Pageable pageable) {
-        return userRepository.findUserByRole(RoleUser.valueOf(seller), pageable);
+    public Page<User> findUsersByUserRole(RoleUser seller, Pageable pageable, StatusSeller status) {
+        if (status == null) {
+            return userRepository.findUserByRole(seller, pageable);
+        }
+        return userRepository.findUserByRoleAndStatus(seller, status, pageable);
+    }
+
+    public void edit(int id, StatusSeller status) {
+        Optional<User> byId = userRepository.findById(id);
+        if(byId.isPresent()){
+            User user = byId.get();
+            user.setStatus(status);
+            userRepository.save(user);
+        }
     }
 }
