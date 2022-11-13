@@ -44,30 +44,31 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title mb-0">Add, Edit & Remove</h4>
+                            <h4 class="card-title mb-0">Show all users</h4>
                         </div><!-- end card header -->
 
                         <div class="card-body">
                             <div id="customerList">
                                 <div class="row g-4 mb-3">
-                                    <div class="col-sm-auto">
-                                        <div>
-                                            <button type="button" class="btn btn-success add-btn"
-                                                    data-bs-toggle="modal" id="create-btn"
-                                                    data-bs-target="#showModal"><i
-                                                    class="ri-add-line align-bottom me-1"></i> Add
-                                            </button>
 
-                                        </div>
-                                    </div>
-                                    <div class="col-sm">
-                                        <div class="d-flex justify-content-sm-end">
-                                            <div class="search-box ms-2">
-                                                <input type="text" class="form-control search"
-                                                       placeholder="Search...">
-                                                <i class="ri-search-line search-icon"></i>
-                                            </div>
-                                        </div>
+                                    <div class="col-lg-3">
+
+                                        <form action="/adminPage" method="get">
+                                            <select name="status" class="form-select rounded-pill mb-3"
+                                                    aria-label="Default select example">
+                                                <option value="">All</option>
+                                                <option th:selected="${param.status!= null && param.status.toString() == 'ACTIVE'}"
+                                                        value="ACTIVE">ACTIVE
+                                                </option>
+                                                <option th:selected="${param.status!= null && param.status.toString() == 'BLOCKED'}"
+                                                        value="BLOCKED">BLOCKED
+                                                </option>
+                                                <option th:selected="${param.status!= null && param.status.toString() == 'IN_PENDING'}"
+                                                        value="IN_PENDING">IN PENDING
+                                                </option>
+                                            </select>
+                                            <input class="btn btn-primary" type="submit" value="search">
+                                        </form>
                                     </div>
                                 </div>
 
@@ -109,20 +110,15 @@
                                                     class="badge badge-soft-success text-uppercase"></span>
                                             </td>
                                             <td>
-                                                <div class="d-flex gap-2">
-                                                    <div class="edit">
-                                                        <button class="btn btn-sm btn-success edit-item-btn"
-                                                                data-bs-toggle="modal" data-bs-target="#showModal">
-                                                            Edit
-                                                        </button>
-                                                    </div>
-                                                    <div class="remove">
-                                                        <button class="btn btn-sm btn-danger remove-item-btn"
-                                                                data-bs-toggle="modal"
-                                                                data-bs-target="#deleteRecordModal">Remove
-                                                        </button>
-                                                    </div>
+
+                                                <div class="edit">
+                                                    <button th:id="${user.id}"
+                                                            class="btn btn-sm btn-danger remove-item-btn"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#showModal">Edit
+                                                    </button>
                                                 </div>
+
                                             </td>
                                         </tr>
                                         </tbody>
@@ -143,7 +139,8 @@
                                 <div class="d-flex justify-content-end">
                                     <div th:if="${users.totalPages > 0}" class="pagination-wrap hstack gap-2">
 
-                                        <a th:each="pageNumber : ${pageNumbers}" class="page-item pagination-prev disabled"
+                                        <a th:each="pageNumber : ${pageNumbers}"
+                                           class="page-item pagination-prev disabled"
                                            th:href="@{/adminPage(size=${users.size}, page=${pageNumber})}"
                                            th:class="${pageNumber==users.number + 1} ? active" th:text="${pageNumber}">
                                         </a>
@@ -169,55 +166,28 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                                     id="close-modal"></button>
                         </div>
-                        <form>
+                        <form action="/status/edit" method="get">
                             <div class="modal-body">
-
-                                <div class="mb-3" id="modal-id" style="display: none;">
-                                    <label for="id-field" class="form-label">ID</label>
-                                    <input type="text" id="id-field" class="form-control" placeholder="ID"
-                                           readonly="">
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="customername-field" class="form-label">Customer Name</label>
-                                    <input type="text" id="customername-field" class="form-control"
-                                           placeholder="Enter Name" required="">
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="email-field" class="form-label">Email</label>
-                                    <input type="email" id="email-field" class="form-control"
-                                           placeholder="Enter Email" required="">
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="phone-field" class="form-label">Phone</label>
-                                    <input type="text" id="phone-field" class="form-control"
-                                           placeholder="Enter Phone no." required="">
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="date-field" class="form-label">Joining Date</label>
-                                    <input type="text" id="date-field" class="form-control"
-                                           placeholder="Select Date" required="">
-                                </div>
-
                                 <div>
                                     <label for="status-field" class="form-label">Status</label>
-                                    <select class="form-control" data-trigger="" name="status-field"
-                                            id="status-field">
-                                        <option value="">Status</option>
-                                        <option value="Active">Active</option>
-                                        <option value="Block">Block</option>
+                                    <input name="id" id="edit-record-id" hidden>
+                                    <select name="statusUser" class="form-control" data-trigger=""
+                                            id="status-field" >
+                                        <option value="ACTIVE">Active</option>
+                                        <option th:selected="${param.status!= null && param.status.toString() == 'BLOCKED'}" value="BLOCKED">Blocked</option>
+                                        <option th:selected="${param.status!= null && param.status.toString() == 'IN_PENDING'}" value="IN_PENDING">In pending</option>
+
                                     </select>
                                 </div>
                             </div>
                             <div class="modal-footer">
                                 <div class="hstack gap-2 justify-content-end">
-                                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close
+                                    <button href="" type="button" class="btn btn-light" data-bs-dismiss="modal">Close
                                     </button>
-                                    <button type="submit" class="btn btn-success" id="add-btn">Add Customer</button>
-                                    <button type="button" class="btn btn-success" id="edit-btn">Update</button>
+
+                                    <button id="edit-record" class="btn btn-light" data-bs-dismiss="modal">Update</button>
+
+
                                 </div>
                             </div>
                         </form>
@@ -244,13 +214,7 @@
                                         ?</p>
                                 </div>
                             </div>
-                            <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
-                                <button type="button" class="btn w-sm btn-light" data-bs-dismiss="modal">Close
-                                </button>
-                                <button type="button" class="btn w-sm btn-danger " id="delete-record">Yes, Delete
-                                    It!
-                                </button>
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -989,6 +953,16 @@
 
 
 <th:block th:insert="/fragmentsAdmin/fragment::footerImport"></th:block>
+
+
 </body>
+
+
+<script>
+    $('.remove-item-btn').on("click", function () {
+        let id = $(this).attr("id")
+        $('#edit-record-id').attr('value', id)
+    })
+</script>
 
 </html>
