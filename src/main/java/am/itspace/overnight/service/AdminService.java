@@ -18,6 +18,7 @@ public class AdminService {
     private final RegionRepository regionRepository;
     private final AttributeRepository attributeRepository;
     private final UserRepository userRepository;
+    private  final MailService mailService;
 
     public List<Region> findAllRegion() {
         return regionRepository.findAll();
@@ -82,6 +83,13 @@ public class AdminService {
             User user = byId.get();
             user.setStatus(status);
             userRepository.save(user);
+            if(user.getStatus().equals(StatusSeller.ACTIVE)) {
+                mailService.sandEmail(user.getEmail(), "WELCOME", "Hi " + user.getName() + " \n" +
+                        " Your profile is activated!!!");
+            }else {
+                mailService.sandEmail(user.getEmail(), "WELCOME", "Hi " + user.getName() + " \n" +
+                        " Your profile is blocked!!!");
+            }
         }
     }
 }
