@@ -5,10 +5,7 @@ import am.itspace.overnight.service.RegionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -24,8 +21,9 @@ public class RegionController {
         return "redirect:/region";
     }
     @GetMapping("/region")
-    public String getAllRegions(ModelMap modelMap) {
-        List<Region> regions = regionService.getAll();
+    public String getAllRegions(@RequestParam(value = "keyword", required = false) String keyword,
+                                ModelMap modelMap) {
+        List<Region> regions = regionService.getAll(keyword);
         modelMap.addAttribute("regions", regions);
         return "/admin/adminPageRegion";
     }
@@ -41,9 +39,9 @@ public class RegionController {
         regionService.updateRegion(regionId,regionName);
         return "redirect:/regions";
     }
-    @GetMapping("/region/delete")
-    public String deleteRegion(@RequestParam("regionId") int regionId) {
-        regionService.deleteById(regionId);
+    @GetMapping("/region/{id}")
+    public String deleteRegion(@PathVariable int id) {
+        regionService.deleteById(id);
         return "redirect:/region";
     }
 }

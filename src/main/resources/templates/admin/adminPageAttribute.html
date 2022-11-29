@@ -45,7 +45,7 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title mb-0">Add, Edit &amp; Remove</h4>
+                                <h4 class="card-title mb-0">All Attribute </h4>
                             </div><!-- end card header -->
 
                             <div class="card-body">
@@ -63,10 +63,20 @@
                                         </div>
                                         <div class="col-sm">
                                             <div class="d-flex justify-content-sm-end">
+
                                                 <div class="search-box ms-2">
-                                                    <input type="text" class="form-control search"
-                                                           placeholder="Search...">
-                                                    <i class="ri-search-line search-icon"></i>
+                                                    <form th:action="@{/attribute}" method="get">
+
+                                                        <div class="SearchBox">
+                                                            <input type="text" name="keyword" th:value="${keyword}"
+                                                                   class="SearchBox-input"
+                                                                   placeholder="Search by attribute name">
+
+                                                            <button class="SearchBox-button">
+                                                                <i class="SearchBox-icon  material-icons">search</i>
+                                                            </button>
+                                                        </div>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
@@ -104,12 +114,6 @@
 
                                                 <td>
                                                     <div class="d-flex gap-2">
-                                                        <div class="edit">
-                                                            <button class="btn btn-sm btn-success edit-item-btn"
-                                                                    data-bs-toggle="modal" data-bs-target="#showModal">
-                                                                Edit
-                                                            </button>
-                                                        </div>
                                                         <div class="remove">
                                                             <button th:id="${attribute.id}"
                                                                     class="btn btn-sm btn-danger remove-item-btn"
@@ -214,7 +218,7 @@
                                     <button type="button" class="btn w-sm btn-light" data-bs-dismiss="modal">Close
                                     </button>
                                     <a href=""
-                                            type="button" class="btn w-sm btn-danger " id="delete-record">Yes, Delete
+                                       type="button" class="btn w-sm btn-danger " id="delete-record">Yes, Delete
                                         It!
                                     </a>
                                 </div>
@@ -962,9 +966,128 @@
 <script>
     $('.remove-item-btn').on("click", function () {
         let id = $(this).attr("id")
-        $('#delete-record').attr('href', '/attribute/'+id)
+        $('#delete-record').attr('href', '/attribute/' + id)
 
     })
 </script>
+<style>
+    :root {
+        --primary-color: #0ab39c;
+        --accent-color: #f06548;
 
-</html>
+        --text-color: #263238;
+        --body-color: #F3F3F9;
+        --main-font: 'roboto';
+        --font-bold: 700;
+        --font-regular: 400;
+    }
+
+    * {
+        box-sizing: border-box
+    }
+
+    body {
+        color: var(--text-color);
+        background-color: var(--body-color);
+        font-family: var(--main-font), Arial;
+        font-weight: var(--font-regular);
+    }
+
+    main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+    }
+
+    h1 {
+        font-weight: var(--font-bold)
+    }
+
+    input,
+    button {
+        border: none;
+        background: none;
+        outline: 0;
+    }
+
+    button {
+        cursor: pointer
+    }
+
+    .SearchBox-input::placeholder {
+        color: white;
+        opacity: .6;
+    }
+
+    .SearchBox-input::-webkit-input-placeholder {
+        color: white;
+    }
+
+    .SearchBox-input::-moz-placeholder {
+        color: white;
+    }
+
+    .SearchBox-input:-ms-input-placeholder {
+        color: white;
+    }
+
+    #formGroupExampleInput:-moz-placeholder {
+        color: white;
+    }
+
+
+    .SearchBox {
+        --height: 4em;
+        display: flex;
+
+        border-radius: var(--height);
+        background-color: var(--primary-color);
+        height: var(--height);
+    }
+
+    .SearchBox:hover .SearchBox-input {
+        padding-left: 2em;
+        padding-right: 1em;
+        width: 240px;
+    }
+
+    .SearchBox-input {
+        width: 0;
+        font-size: 1.2em;
+        color: #fff;
+        transition: .45s;
+    }
+
+    .SearchBox-button {
+        display: flex;
+        border-radius: 50%;
+        width: var(--height);
+        height: var(--height);
+        background-color: var(--accent-color);
+        transition: .3s;
+    }
+
+    .SearchBox-button:active {
+        transform: scale(.85);
+    }
+
+    .SearchBox-icon {
+        margin: auto;
+        color: #fff;
+
+    }
+
+
+    @media screen and (min-width: 400px) {
+        .SearchBox:hover .SearchBox-input {
+            width: 500px;
+
+        }
+    }
+
+    <
+    /
+    html >

@@ -69,7 +69,9 @@
                                             </select>
                                             <input class="btn btn-primary" type="submit" value="search">
                                         </form>
+
                                     </div>
+
                                 </div>
 
                                 <div class="table-responsive table-card mt-3 mb-1">
@@ -139,10 +141,10 @@
                                 <div class="d-flex justify-content-end">
                                     <div th:if="${users.totalPages > 0}" class="pagination-wrap hstack gap-2">
 
-                                        <a th:each="pageNumber : ${pageNumbers}"
+                                        <a th:each="pageNumber: ${pageNumbers}"
                                            class="page-item pagination-prev disabled"
                                            th:href="@{/adminPage(size=${users.size}, page=${pageNumber})}"
-                                           th:class="${pageNumber==users.number + 1} ? active" th:text="${pageNumber}">
+                                           th:text="${pageNumber}">
                                         </a>
 
                                     </div>
@@ -172,9 +174,11 @@
                                     <label for="status-field" class="form-label">Status</label>
                                     <input name="id" id="edit-record-id" hidden>
                                     <select name="statusUser" class="form-control" data-trigger=""
-                                            id="status-field" >
+                                            id="status-field">
                                         <option value="ACTIVE">Active</option>
-                                        <option th:selected="${param.status!= null && param.status.toString() == 'BLOCKED'}" value="BLOCKED">Blocked</option>
+                                        <option th:selected="${param.status!= null && param.status.toString() == 'BLOCKED'}"
+                                                value="BLOCKED">Blocked
+                                        </option>
 
 
                                     </select>
@@ -185,7 +189,8 @@
                                     <button href="" type="button" class="btn btn-light" data-bs-dismiss="modal">Close
                                     </button>
 
-                                    <button id="edit-record" class="btn btn-light" data-bs-dismiss="modal">Update</button>
+                                    <button id="edit-record" class="btn btn-light" data-bs-dismiss="modal">Update
+                                    </button>
 
 
                                 </div>
@@ -195,32 +200,6 @@
                 </div>
             </div>
 
-            <!-- Modal -->
-            <div class="modal fade zoomIn" id="deleteRecordModal" tabindex="-1" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                                    id="btn-close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="mt-2 text-center">
-                                <lord-icon src="../../../gsqxdxog.json" trigger="loop"
-                                           colors="primary:#f7b84b,secondary:#f06548"
-                                           style="width:100px;height:100px"></lord-icon>
-                                <div class="mt-4 pt-2 fs-15 mx-4 mx-sm-5">
-                                    <h4>Are you Sure ?</h4>
-                                    <p class="text-muted mx-4 mb-0">Are you Sure You want to Remove this Record
-                                        ?</p>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--end modal -->
-
         </div>
         <!-- container-fluid -->
     </div>
@@ -229,9 +208,6 @@
     <th:block th:insert="/fragmentsAdmin/fragment::footer"></th:block>
 </div>
 <!-- end main content-->
-
-
-<!-- END layout-wrapper -->
 
 
 <!--start back-to-top-->
