@@ -3,6 +3,7 @@ package am.itspace.overnight.controller.admin;
 import am.itspace.overnight.entity.RoleUser;
 import am.itspace.overnight.entity.StatusSeller;
 import am.itspace.overnight.entity.User;
+import am.itspace.overnight.entity.UserBook;
 import am.itspace.overnight.security.CurrentUser;
 import am.itspace.overnight.service.AdminService;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -48,7 +50,21 @@ public class AdminController {
     }
 
     @GetMapping("/user")
-    public String users() {
+    public String orders(@PageableDefault(size = 5) Pageable pageable,
+                         @RequestParam(value = "startDate", required = false) Date startDate,
+                         @RequestParam(value = "endDate", required = false) Date endDate,
+                         @RequestParam(value = "keyword", required = false) String keyword,
+                         ModelMap modelMap) {
+
+        Page<UserBook> orders = adminService.findUserBookAll(pageable, startDate, endDate, keyword);
+        int totalPages = orders.getTotalPages();
+        if (totalPages > 0) {
+            List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages)
+                    .boxed()
+                    .collect(Collectors.toList());
+            modelMap.addAttribute("pageNumbers", pageNumbers);
+        }
+        modelMap.addAttribute("orders", orders);
         return "admin/adminPageUser";
     }
 
@@ -95,8 +111,7 @@ public class AdminController {
 
     @GetMapping("/status/edit")
     public String editStatus(@RequestParam("id") int id,
-                             @RequestParam(value = "statusUser", required = false) StatusSeller status )
-    {
+                             @RequestParam(value = "statusUser", required = false) StatusSeller status) {
         adminService.edit(id, status);
         return "redirect:/adminPage";
     }

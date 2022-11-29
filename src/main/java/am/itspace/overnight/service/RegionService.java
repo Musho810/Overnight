@@ -12,9 +12,10 @@ public class RegionService {
     public void addRegion(Region region) {
         regionRepository.save(region);
     }
-    public List<Region> getAll() {
-        List<Region> regionsList = regionRepository.findAll();
-        return regionsList;
+    public List<Region> getAll(String keyword) {
+        if(keyword==null) {
+            return regionRepository.findAll();
+        }else return regionRepository.findByNameContaining(keyword);
     }
     public void deleteById(int regionId) {
         regionRepository.deleteById(regionId);

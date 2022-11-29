@@ -1,14 +1,12 @@
 package am.itspace.overnight.controller;
 
 import am.itspace.overnight.entity.Attribute;
+import am.itspace.overnight.entity.StatusSeller;
 import am.itspace.overnight.service.AdminService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,9 +17,11 @@ public class AttributeController {
     private final AdminService adminService;
 
     @GetMapping("/attribute")
-    public String attribute(ModelMap modelMap) {
-        List<Attribute> allAttribute = adminService.findAllAttribute();
+    public String attribute(@RequestParam(value = "keyword", required = false) String keyword,
+                            ModelMap modelMap) {
+        List<Attribute> allAttribute = adminService.findAllAttribute(keyword);
         modelMap.addAttribute("allAttribute",allAttribute);
+
         return "admin/adminPageAttribute";
     }
 
