@@ -102,7 +102,7 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
-        <createTable tableName="product_galerry">
+        <createTable tableName="product_gallery">
             <column name="id" type="int" autoIncrement="true">
                 <constraints primaryKey="true"/>
             </column>
@@ -185,7 +185,7 @@
 
     </changeSet>
 
-    <changeSet id="addforeignkey" author="mmanasyan">
+    <changeSet id="addForeignKey" author="mmanasyan">
         <addForeignKeyConstraint baseTableName="city_village"
                                  baseColumnNames="region_id"
                                  constraintName="city_village_region_id_fk"
@@ -201,9 +201,9 @@
                                  constraintName="product_city_village_id_city_village_id_fk"
                                  referencedTableName="city_village"
                                  referencedColumnNames="id"/>
-        <addForeignKeyConstraint baseTableName="product_galerry"
+        <addForeignKeyConstraint baseTableName="product_gallery"
                                  baseColumnNames="product_id"
-                                 constraintName="product_galerry_product_id_product_id_fk"
+                                 constraintName="product_gallery_product_id_product_id_fk"
                                  referencedTableName="product"
                                  referencedColumnNames="id"/>
         <addForeignKeyConstraint baseTableName="comments"

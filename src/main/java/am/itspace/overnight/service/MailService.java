@@ -1,5 +1,6 @@
 package am.itspace.overnight.service;
 
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
@@ -22,4 +23,5 @@ public class MailService {
        mailSender.send(mailMessage);
 
    }
+
 }

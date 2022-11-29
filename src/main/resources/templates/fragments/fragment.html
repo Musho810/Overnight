@@ -89,7 +89,7 @@
 
 <div th:fragment="headerMenu" th:remove="tag">
 
-    <div id="apus-header" class="apus-header no_keep_header visible-lg header-1-106">
+    <div id="apus-header" class="href="/"">
         <div data-elementor-type="wp-post" data-elementor-id="106" class="elementor elementor-106"
              data-elementor-settings="[]">
             <div class="elementor-inner">
@@ -109,7 +109,7 @@
                                                  data-widget_type="apus_element_logo.default">
                                                 <div class="elementor-widget-container">
                                                     <div class="logo ">
-                                                        <a href="index.html">
+                                                        <a href="/">
                 <span class="logo-main">
                     <img width="242" height="67" src="wp-content/uploads/2020/08/logo.png"
                          class="attachment-full size-full" alt="" loading="lazy">                </span>
@@ -164,8 +164,8 @@
                                                             <li>
                                                                 <a href="?lang"><img src="wp-content/uploads/2020/08/us drosh.jpg"></a>
                                                             </li>
-                                                            <li><i class="fas fa-user-circle text-green"></i><a
-                                                                    href="/signin" class="wel-user" th:text="#{main.signin}">SIGN IN</a></li>
+                                                            <li><i class="fas fa-user-circle text-green"></i>
+                                                                <a href="/signin" class="wel-user" th:text="#{main.signin}">SIGN IN</a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -180,11 +180,8 @@
             </div>
         </div>
     </div>
-</div>
-
-</div>
-
 
 
 </body>
 </html>
+

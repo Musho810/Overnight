@@ -61,21 +61,6 @@
     </div>
     <div class="over-dark"></div>
 
-    <div id="apus-header-mobile" class="header-mobile hidden-lg clearfix">
-        <div class="flex-middle">
-            <div class="logo-wrapper">
-                <div class="logo logo-theme">
-                    <a href="index.html">
-                        <img src="wp-content/themes/travlio/images/logo.png" alt="Travlio">
-                    </a>
-                </div>
-            </div>
-
-            <div class="ali-right">
-                <a href="#navbar-offcanvas" class="btn btn-theme btn-showmenu"><i class="ti-align-right"></i></a>
-            </div>
-        </div>
-    </div>
     <th:block th:insert="/fragments/fragment::headerMenu" ></th:block>
 
     <div id="apus-main-content">
@@ -529,7 +514,7 @@
                                                                                         </div>
                                                                                         <div class="search_guests_apply">
                                                                                             <button id="search_guests_apply_btn"
-                                                                                                    class="btn button btn-primary">
+                                                                                                    class="btn button btn-primary" th:text="#{signin.signin}">
                                                                                                 Մուտք
                                                                                             </button>
                                                                                         </div>
@@ -1795,7 +1780,8 @@
         <i class="ti-arrow-up"></i>
     </a>
 
-</div><!-- .site -->
+</div>
+<!-- .site -->
 <script>(function () {
     function maybePrefixUrlField() {
         if (this.value.trim() !== '' && this.value.indexOf('http') !== 0) {
