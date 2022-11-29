@@ -14,6 +14,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "user")
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -27,5 +28,8 @@ public class User {
     private RoleUser role;
     @Enumerated(EnumType.STRING)
     private StatusSeller status;
+    private boolean isEnabled;
+    private String verifyToken;
+
 
 }

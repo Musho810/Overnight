@@ -89,11 +89,13 @@ public class AdminService {
             User user = byId.get();
             user.setStatus(status);
             userRepository.save(user);
-            if (user.getStatus().equals(StatusSeller.ACTIVE)) {
-                mailService.sandEmail(user.getEmail(), "WELCOME", "Hi " + user.getName() + " \n" +
+
+            if(user.getStatus().equals(StatusSeller.ACTIVE)) {
+                mailService.sendEmail(user.getEmail(), "WELCOME", "Hi " + user.getName() + " \n" +
                         " Your profile is activated!!!");
-            } else {
-                mailService.sandEmail(user.getEmail(), "WARNING", "Hi " + user.getName() + " \n" +
+            }else {
+                mailService.sendEmail(user.getEmail(), "WELCOME", "Hi " + user.getName() + " \n" +
+
                         " Your profile is blocked!!!");
             }
         }
