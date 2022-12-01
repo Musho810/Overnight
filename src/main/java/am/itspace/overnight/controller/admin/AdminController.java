@@ -7,15 +7,25 @@ import am.itspace.overnight.entity.UserBook;
 import am.itspace.overnight.security.CurrentUser;
 import am.itspace.overnight.service.AdminService;
 import lombok.RequiredArgsConstructor;
+
+
+import org.apache.commons.io.IOUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.MediaType;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
@@ -27,7 +37,9 @@ import java.util.stream.IntStream;
 public class AdminController {
     private final AdminService adminService;
     private final PasswordEncoder passwordEncoder;
-    private CurrentUser currentUser;
+    @Value("${overnight.images.folder}")
+    private String folderPath;
+
 
     @GetMapping("/adminPage")
     public String adminPage(@PageableDefault(size = 5) Pageable pageable,
@@ -103,12 +115,23 @@ public class AdminController {
         return "/admin/adminProfilePage";
     }
 
-    @PostMapping("/user/update")
-    public String updateProfile(@ModelAttribute User user) {
+    @PostMapping("/admin/update")
+    public String updateProfile(@ModelAttribute User user){
         adminService.update(user);
         return "redirect:/";
     }
+    @PostMapping("/image/add")
+    public String addImage(@AuthenticationPrincipal CurrentUser currentUser,
+                           @RequestParam(value = "userImage", required = false) MultipartFile file) throws IOException {
+        adminService.image(currentUser,file);
+        return "redirect:/user";
+    }
 
+    @GetMapping(value = "/user/getImage", produces = MediaType.IMAGE_JPEG_VALUE)
+    public @ResponseBody byte[] getImage(@RequestParam("fileName") String fileName) throws IOException {
+        InputStream inputStream = new FileInputStream(folderPath + File.separator + fileName);
+        return IOUtils.toByteArray(inputStream);
+    }
     @GetMapping("/status/edit")
     public String editStatus(@RequestParam("id") int id,
                              @RequestParam(value = "statusUser", required = false) StatusSeller status) {
