@@ -108,7 +108,7 @@ public class AdminService {
 
     public Page<UserBook> findUserBookAll(Pageable pageable, Date startDate, Date endDate, String keyword) {
         if (startDate != null && endDate != null) {
-            return userBookRepository.findByStartDateAfterAndEndDateBefore(pageable, startDate, endDate);
+            return userBookRepository.findByStartDateOrEndDateBetween(pageable, startDate, endDate);
         } else if (keyword != null) {
             return userBookRepository.findByProductNameContaining(pageable, keyword);
 

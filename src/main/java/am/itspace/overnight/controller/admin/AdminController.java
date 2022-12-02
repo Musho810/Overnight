@@ -7,9 +7,8 @@ import am.itspace.overnight.entity.UserBook;
 import am.itspace.overnight.security.CurrentUser;
 import am.itspace.overnight.service.AdminService;
 import lombok.RequiredArgsConstructor;
-
-
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -26,7 +25,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -63,12 +64,17 @@ public class AdminController {
 
     @GetMapping("/user")
     public String orders(@PageableDefault(size = 5) Pageable pageable,
-                         @RequestParam(value = "startDate", required = false) Date startDate,
-                         @RequestParam(value = "endDate", required = false) Date endDate,
+                         @RequestParam(value = "startDate", required = false) String startDate,
+                         @RequestParam(value = "endDate", required = false) String endDate,
                          @RequestParam(value = "keyword", required = false) String keyword,
-                         ModelMap modelMap) {
+                         ModelMap modelMap) throws ParseException {
 
-        Page<UserBook> orders = adminService.findUserBookAll(pageable, startDate, endDate, keyword);
+        String pattern = "yyyy-MM-dd";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+
+        Date from = StringUtils.isEmpty(endDate) ? null : simpleDateFormat.parse(startDate);
+        Date to = StringUtils.isEmpty(startDate) ? null : simpleDateFormat.parse(endDate);
+        Page<UserBook> orders = adminService.findUserBookAll(pageable, from, to, keyword);
         int totalPages = orders.getTotalPages();
         if (totalPages > 0) {
             List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages)
@@ -116,14 +122,15 @@ public class AdminController {
     }
 
     @PostMapping("/admin/update")
-    public String updateProfile(@ModelAttribute User user){
+    public String updateProfile(@ModelAttribute User user) {
         adminService.update(user);
         return "redirect:/";
     }
+
     @PostMapping("/image/add")
     public String addImage(@AuthenticationPrincipal CurrentUser currentUser,
                            @RequestParam(value = "userImage", required = false) MultipartFile file) throws IOException {
-        adminService.image(currentUser,file);
+        adminService.image(currentUser, file);
         return "redirect:/user";
     }
 
@@ -132,6 +139,7 @@ public class AdminController {
         InputStream inputStream = new FileInputStream(folderPath + File.separator + fileName);
         return IOUtils.toByteArray(inputStream);
     }
+
     @GetMapping("/status/edit")
     public String editStatus(@RequestParam("id") int id,
                              @RequestParam(value = "statusUser", required = false) StatusSeller status) {

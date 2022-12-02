@@ -117,6 +117,44 @@
                                                                     <div id="search-box" class="babe-search-box ">
 
 
+<!--
+
+                                                                                    <option th:each="region:${regions}"
+                                                                                            th:text="${region.getName()}">
+                                                                                    </option>
+
+<!--                                                                                </select>-->
+<!--                                                                                <div class="add_input_field is-active"-->
+<!--                                                                                     data-inputfield="1" tabindex="0"-->
+<!--                                                                                     data-active-0="1" data-title-0=""-->
+<!--                                                                                     data-tax="ba_destinations">-->
+
+
+<!--                                                                                    <div class="add_ids_title" >-->
+<!--                                                                                        <div class="add_ids_title_value" th:text="#{main.searche}">-->
+<!--                                                                                            Բոլոր ուղղությունները-->
+
+
+<!--                                                                                        </div>-->
+<!--&lt;!&ndash;                                                                                        <i class="fas fa-chevron-down"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                                                                                        <ul id="add_ids_list_ba_destinations"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                                                            class="add_ids_list"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                                                            data-parent="0">&ndash;&gt;-->
+<!--&lt;!&ndash;                                                                                            <li class="term_item term_item_all"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                                                                data-id="0">All&ndash;&gt;-->
+<!--&lt;!&ndash;                                                                                                Destinations&ndash;&gt;-->
+<!--&lt;!&ndash;                                                                                            </li>&ndash;&gt;-->
+<!--&lt;!&ndash;                                                                                            <li><option th:each="region: ${regions}"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                                                                    th:text="${region.name}"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                                                                    th:value="${region.id}"></option>&ndash;&gt;-->
+<!--&lt;!&ndash;                                                                                            </li>&ndash;&gt;-->
+<!--&lt;!&ndash;                                                                                        </ul>&ndash;&gt;-->
+<!--                                                                                        <input type="hidden"-->
+<!--                                                                                               class="input_select_input_value"-->
+<!--                                                                                               name="add_ids_ba_destinations"-->
+<!--                                                                                               value="0">-->
+<!--                                                                                    </div>-->
+<!--                                                                                </div>-->
                                                                         <form name="search_form"
                                                                               action="http://demoapus-wp1.com/travlio/search-result/"
                                                                               method="get" id="search_form"
@@ -128,7 +166,7 @@
                                                                                      data-tax="ba_destinations">
 
                                                                                     <div class="add_ids_title">
-                                                                                        <div class="add_ids_title_value" th:text="#{main.searche}">
+                                                                                        <div class="add_ids_title_value">
                                                                                             Բոլոր ուղղությունները
                                                                                         </div>
                                                                                         <i class="fas fa-chevron-down"></i>
@@ -136,20 +174,12 @@
                                                                                             class="add_ids_list"
                                                                                             data-parent="0">
                                                                                             <li class="term_item term_item_all"
-                                                                                                data-id="0">All
+                                                                                                data-id="0" >All
                                                                                                 Destinations
                                                                                             </li>
                                                                                             <li class="term_item term_item_level_0"
-                                                                                                data-id="50">Amsterdam
-                                                                                            </li>
-                                                                                            <li class="term_item term_item_level_0"
-                                                                                                data-id="47">London
-                                                                                            </li>
-                                                                                            <li class="term_item term_item_level_0"
-                                                                                                data-id="48">New York
-                                                                                            </li>
-                                                                                            <li class="term_item term_item_level_0"
-                                                                                                data-id="49">Paris
+                                                                                                data-id="50" th:each="region:${regions}"
+                                                                                                th:text="${region.getName()}">Amsterdam
                                                                                             </li>
                                                                                         </ul>
                                                                                         <input type="hidden"
@@ -158,7 +188,6 @@
                                                                                                value="0">
                                                                                     </div>
                                                                                 </div>
-
                                                                                 <div class="search-date is-active"
                                                                                      data-inputfield="1" tabindex="0"
                                                                                      data-active-0="1"
