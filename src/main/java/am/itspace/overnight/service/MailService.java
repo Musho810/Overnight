@@ -2,6 +2,7 @@ package am.itspace.overnight.service;
 
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -16,6 +17,7 @@ import javax.mail.internet.MimeMessage;
 public class MailService {
 
     private final JavaMailSender mailSender;
+    private final MailSender mailSend;
 
     @Async
     public void sendEmail(String to, String subject, String text) {
@@ -25,7 +27,7 @@ public class MailService {
         mailMessage.setSubject(subject);
         mailMessage.setText(text);
 
-        mailSender.send(mailMessage);
+        mailSend.send(mailMessage);
     }
 
     @Async

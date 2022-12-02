@@ -5,12 +5,17 @@ import am.itspace.overnight.repository.AttributeRepository;
 import am.itspace.overnight.repository.RegionRepository;
 import am.itspace.overnight.repository.UserBookRepository;
 import am.itspace.overnight.repository.UserRepository;
+import am.itspace.overnight.security.CurrentUser;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -23,6 +28,8 @@ public class AdminService {
     private final UserRepository userRepository;
     private final UserBookRepository userBookRepository;
     private final MailService mailService;
+    @Value("${overnight.images.folder}")
+    private String folderPath;
 
     public List<Region> findAllRegion() {
         return regionRepository.findAll();
@@ -65,8 +72,6 @@ public class AdminService {
             byId.get().setEmail(user.getEmail());
             byId.get().setPhoneNumber(user.getPhoneNumber());
             byId.get().setStatus(user.getStatus());
-
-
             userRepository.save(byId.get());
         }
     }
@@ -90,11 +95,11 @@ public class AdminService {
             user.setStatus(status);
             userRepository.save(user);
 
-            if(user.getStatus().equals(StatusSeller.ACTIVE)) {
+            if (user.getStatus().equals(StatusSeller.ACTIVE)) {
                 mailService.sendEmail(user.getEmail(), "WELCOME", "Hi " + user.getName() + " \n" +
                         " Your profile is activated!!!");
-            }else {
-                mailService.sendEmail(user.getEmail(), "WELCOME", "Hi " + user.getName() + " \n" +
+            } else {
+                mailService.sendEmail(user.getEmail(), "WARNING", "Hi " + user.getName() + " \n" +
 
                         " Your profile is blocked!!!");
             }
@@ -110,6 +115,17 @@ public class AdminService {
         } else {
             return userBookRepository.findAll(pageable);
         }
+    }
+
+    public void image(CurrentUser currentUser, MultipartFile file) throws IOException {
+        if (!file.isEmpty() && file.getSize() > 0) {
+            String fileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();
+            File newFile = new File(folderPath + File.separator + fileName);
+            file.transferTo(newFile);
+            currentUser.getUser().setPicUrl(fileName);
+            userRepository.save(currentUser.getUser());
+        }
+
     }
 }
 
