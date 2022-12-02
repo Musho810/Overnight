@@ -31,4 +31,8 @@ public class RegionService {
             regionRepository.save(region);
         }
     }
+    public List<Region> findAll() {
+        return regionRepository.findAll();
+
+    }
 }
