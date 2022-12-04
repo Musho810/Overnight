@@ -1,68 +1,43 @@
 package am.itspace.overnight.service;
 
-import am.itspace.overnight.entity.*;
-import am.itspace.overnight.repository.AttributeRepository;
-import am.itspace.overnight.repository.RegionRepository;
+import am.itspace.overnight.entity.RoleUser;
+import am.itspace.overnight.entity.StatusSeller;
+import am.itspace.overnight.entity.User;
+import am.itspace.overnight.entity.UserBook;
 import am.itspace.overnight.repository.UserBookRepository;
 import am.itspace.overnight.repository.UserRepository;
 import am.itspace.overnight.security.CurrentUser;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-
 import java.io.File;
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.Date;
-import java.util.List;
 import java.util.Optional;
+
+import static am.itspace.overnight.util.DateUtil.simpleDateFormat;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class AdminService {
-    private final RegionRepository regionRepository;
-    private final AttributeRepository attributeRepository;
     private final UserRepository userRepository;
     private final UserBookRepository userBookRepository;
     private final MailService mailService;
     @Value("${overnight.images.folder}")
     private String folderPath;
 
-    public List<Region> findAllRegion() {
-        return regionRepository.findAll();
-    }
-
-    public void regionSave(Region region) {
-        regionRepository.save(region);
-
-    }
-
-    public void deleteRegionById(int id) {
-        regionRepository.deleteById(id);
-    }
-
-    public void attributeSave(Attribute attribute) {
-        attributeRepository.save(attribute);
-    }
-
-    public List<Attribute> findAllAttribute(String keyword) {
-        if (keyword == null) {
-            return attributeRepository.findAll();
-        } else return attributeRepository.findByNameContaining(keyword);
-    }
-
-    public void deleteAttributeById(int id) {
-        attributeRepository.deleteById(id);
-    }
-
 
     public void save(User user) {
         userRepository.save(user);
     }
-
 
     public void update(User user) {
         Optional<User> byId = userRepository.findById(user.getId());
@@ -75,7 +50,6 @@ public class AdminService {
             userRepository.save(byId.get());
         }
     }
-
     public Optional<User> getUserByEmail(String email) {
         return userRepository.findByEmail(email);
 
@@ -100,15 +74,23 @@ public class AdminService {
                         " Your profile is activated!!!");
             } else {
                 mailService.sendEmail(user.getEmail(), "WARNING", "Hi " + user.getName() + " \n" +
-
                         " Your profile is blocked!!!");
             }
         }
     }
 
-    public Page<UserBook> findUserBookAll(Pageable pageable, Date startDate, Date endDate, String keyword) {
-        if (startDate != null && endDate != null) {
-            return userBookRepository.findByStartDateOrEndDateBetween(pageable, startDate, endDate);
+    public Page<UserBook> findUserBookAll(Pageable pageable, String startDate, String endDate, String keyword) {
+
+        Date from = null;
+        Date to = null;
+        try {
+            from = StringUtils.isEmpty(endDate) ? null : simpleDateFormat.parse(startDate);
+            to = StringUtils.isEmpty(startDate) ? null : simpleDateFormat.parse(endDate);
+        } catch (ParseException e) {
+            log.error("Error parsing date. message: {}", e.getMessage());
+        }
+        if (from != null && to != null) {
+            return userBookRepository.findByStartDateOrEndDateBetween(pageable, from, to);
         } else if (keyword != null) {
             return userBookRepository.findByProductNameContaining(pageable, keyword);
 
