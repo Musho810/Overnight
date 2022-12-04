@@ -1,6 +1,7 @@
 package am.itspace.overnight.service;
 
 import am.itspace.overnight.entity.Attribute;
+import am.itspace.overnight.exception.UserNotFoundException;
 import am.itspace.overnight.repository.AttributeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -24,6 +25,6 @@ public class AttributeService {
     }
 
     public void deleteAttributeById(int id) {
-        attributeRepository.deleteById(id);
+       attributeRepository.deleteById(id);
     }
 }

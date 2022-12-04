@@ -4,6 +4,7 @@ import am.itspace.overnight.entity.RoleUser;
 import am.itspace.overnight.entity.StatusSeller;
 import am.itspace.overnight.entity.User;
 import am.itspace.overnight.entity.UserBook;
+import am.itspace.overnight.exception.UserNotFoundException;
 import am.itspace.overnight.repository.UserBookRepository;
 import am.itspace.overnight.repository.UserRepository;
 import am.itspace.overnight.security.CurrentUser;
@@ -48,6 +49,8 @@ public class AdminService {
             byId.get().setPhoneNumber(user.getPhoneNumber());
             byId.get().setStatus(user.getStatus());
             userRepository.save(byId.get());
+        }else {
+            throw new UserNotFoundException(user.getId());
         }
     }
     public Optional<User> getUserByEmail(String email) {
@@ -64,7 +67,10 @@ public class AdminService {
 
     public void edit(int id, StatusSeller status) {
         Optional<User> byId = userRepository.findById(id);
-        if (byId.isPresent()) {
+        if(byId.isEmpty()){
+            throw new UserNotFoundException(id);
+        }
+        else{
             User user = byId.get();
             user.setStatus(status);
             userRepository.save(user);
