@@ -4,6 +4,7 @@ import am.itspace.overnight.entity.User;
 import am.itspace.overnight.repository.UserRepository;
 import am.itspace.overnight.security.CurrentUser;
 import liquibase.pro.packaged.C;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -11,8 +12,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import javax.servlet.http.HttpServletRequest;
 
 @ControllerAdvice
-public class MyControllerAdvice {
 
+public class MyControllerAdvice {
     @ModelAttribute(name = "currentUser")
     public User currentUser(@AuthenticationPrincipal CurrentUser currentUser) {
         if (currentUser != null) {
@@ -20,8 +21,9 @@ public class MyControllerAdvice {
         }
         return null;
     }
+
     @ModelAttribute(name = "currentUrl")
-    public String currentUrl(HttpServletRequest request){
+    public String currentUrl(HttpServletRequest request) {
         return request.getRequestURI();
 
     }
