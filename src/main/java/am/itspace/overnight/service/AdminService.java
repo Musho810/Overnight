@@ -43,6 +43,7 @@ public class AdminService {
     public void update(User user) {
         Optional<User> byId = userRepository.findById(user.getId());
         if (byId.isPresent()) {
+            log.info("Got from DB User by id: {} ",user.getId());
             byId.get().setName(user.getName());
             byId.get().setSurname(user.getSurname());
             byId.get().setEmail(user.getEmail());

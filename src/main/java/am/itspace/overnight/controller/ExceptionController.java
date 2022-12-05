@@ -1,13 +1,14 @@
 package am.itspace.overnight.controller;
 
-import am.itspace.overnight.exception.UserNotFoundException;
-import org.springframework.web.bind.annotation.ControllerAdvice;
-import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.boot.web.servlet.error.ErrorController;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-@ControllerAdvice
-public class ExceptionController {
-    @ExceptionHandler(UserNotFoundException.class)
-    public String userNotFoundException(UserNotFoundException ex) {
+@Controller
+public class ExceptionController implements ErrorController {
+
+    @RequestMapping("/error")
+    public String error() {
         return "error404";
     }
 }
