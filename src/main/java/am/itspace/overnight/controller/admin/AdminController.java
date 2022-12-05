@@ -4,6 +4,7 @@ import am.itspace.overnight.entity.RoleUser;
 import am.itspace.overnight.entity.StatusSeller;
 import am.itspace.overnight.entity.User;
 import am.itspace.overnight.entity.UserBook;
+import am.itspace.overnight.exception.UserNotFoundException;
 import am.itspace.overnight.security.CurrentUser;
 import am.itspace.overnight.service.AdminService;
 import lombok.RequiredArgsConstructor;
@@ -18,9 +19,11 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.Valid;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -82,8 +85,15 @@ public class AdminController {
     }
 
     @GetMapping("/profileSettings")
-    public String profSett() {
-        return "/admin/adminProfilePage";
+    public String profSett(@AuthenticationPrincipal CurrentUser currentUser,
+                           ModelMap modelMap) {
+        Optional<User> userByEmail = adminService.getUserByEmail(currentUser.getUsername());
+        if(userByEmail.isPresent()){
+            modelMap.addAttribute("user", userByEmail.get());
+            return "/admin/adminProfilePage";
+        }else {
+            throw new UserNotFoundException(currentUser.getUser().getId());
+        }
     }
 
     @PostMapping("/password/change")
@@ -109,9 +119,14 @@ public class AdminController {
     }
 
     @PostMapping("/admin/update")
-    public String updateProfile(@ModelAttribute User user,
-                                @AuthenticationPrincipal CurrentUser currentUser) {
-        log.debug("Controller/admin/update called by {}", currentUser.getUsername());
+    public String updateProfile(@Valid @ModelAttribute User user, BindingResult result,
+                                @AuthenticationPrincipal CurrentUser currentUser,
+                                ModelMap modelMap) {
+        log.info("Controller /admin/update called by {}", currentUser.getUsername());
+        if (result.hasErrors()) {
+            modelMap.addAttribute("user", user);
+            return "/admin/adminProfilePage";
+        }
         adminService.update(user);
         log.info("Update admin profile by {}", currentUser.getUsername());
         return "redirect:/";
