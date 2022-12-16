@@ -38,8 +38,6 @@ public class UserService {
                         + user.getEmail() + "&token=" + user.getVerifyToken() + "\">Activate</a>");
 
     }
-
-
     public void verifyUser(String email, String token) throws Exception {
         Optional<User> userOptional = userRepository.findByEmailAndVerifyToken(email, token);
         if (userOptional.isEmpty()) {

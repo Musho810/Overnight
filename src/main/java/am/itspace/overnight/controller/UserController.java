@@ -35,7 +35,7 @@ public class UserController {
     @PostMapping("/register")
     public String register(@ModelAttribute User user, ModelMap modelMap) throws DuplicateResourceException, MessagingException {
         Optional<User> byEmail = userService.getUserByEmail(user.getEmail());
-        if (!byEmail.isEmpty()) {
+        if (byEmail.isPresent()) {
             modelMap.addAttribute("errorMassage", "Email already in use");
             return "signin";
         }
