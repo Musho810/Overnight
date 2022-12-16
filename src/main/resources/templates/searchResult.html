@@ -111,7 +111,7 @@
         </div>
     </div>
 </div>
-    <div id="apus-header" class="href="/"">
+    <div id="apus-header" class="href=/">
     <div data-elementor-type="wp-post" data-elementor-id="106" class="elementor elementor-106"
          data-elementor-settings="[]">
         <div class="elementor-inner">
@@ -207,18 +207,25 @@
         <a href="javascript:void(0)" class="mobile-sidebar-btn hidden-lg hidden-md"> <i class="flaticon-menu-1"></i> Show Sidebar</a>
         <div class="mobile-sidebar-panel-overlay"></div>
         <div class="row">
+
+
+
             <div class="col-md-4 col-sm-12 col-xs-12">
                 <aside class="sidebar sidebar-left" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
                     <aside class="widget widget_babe_widget_search_form"><div id="search-box" class="babe-search-box ">
 
 
-                        <form name="search_form" action="http://demoapus-wp1.com/travlio/search-result/" method="get" id="search_form" class="babe-search-form ">
+                        <form name="search_form" action="search-result/filter" method="get" id="search_form" class="babe-search-form ">
                             <div class="input-group">
                                 <div class="add_input_field is-active" data-inputfield="1" tabindex="0" data-active-0="1" data-title-0="" data-tax="ba_destinations">
                                     <i class="ti-location-pin"></i><div class="add_ids_title">
                                     <div class="add_ids_title_value">All Destinations</div><i class="fas fa-chevron-down"></i>
                                     <ul id="add_ids_list_ba_destinations" class="add_ids_list" data-parent="0">
-                                        <li class="term_item term_item_all" data-id="0">All Destinations</li><li class="term_item term_item_level_0" data-id="50">Amsterdam</li><li class="term_item term_item_level_0" data-id="47">London</li><li class="term_item term_item_level_0" data-id="48">New York</li><li class="term_item term_item_level_0" data-id="49">Paris</li>
+                                        <li class="term_item term_item_all" data-id="0">All Destinations</li>
+                                        <li class="term_item term_item_level_0" data-id="50" th:each="region:${regions}"
+                                            th:attr="data-id=${region.id}"
+                                            th:text="${region.getName()}">Amsterdam</li>
+
                                     </ul>
                                     <input type="hidden" class="input_select_input_value" name="add_ids_ba_destinations" value="0">
                                 </div>
@@ -227,36 +234,12 @@
                                 <div class="search-date is-active" data-inputfield="1" tabindex="0" data-active-0="1" data-title-0="Date from">
                                     <i class="ti-calendar "></i><input type="text" class="search_date" id="date_from" name="date_from" value="" placeholder="Date from">
                                 </div>
-                                <div class="input_select_field input_select_field_time_from  is-active" data-name="time_from" data-inputfield="1" data-active-0="1" tabindex="0">
-                                    <div class="input_select_title">
-                                        <div class="input_select_title_value">Start at</div>
-                                        <div class="input_select_wrapper">
-                                            <input type="text" class="input_select_input" name="time_from_label" value="12:00 am">
-                                            <input type="hidden" class="input_select_input_value" name="time_from" value="00:00">
-                                            <ul class="input_select_list">
-                                                <li class="term_item term_item_selected" data-id="00:00" data-value="12:00 am">12:00 am</li><li class="term_item" data-id="01:00" data-value="1:00 am">1:00 am</li><li class="term_item" data-id="02:00" data-value="2:00 am">2:00 am</li><li class="term_item" data-id="03:00" data-value="3:00 am">3:00 am</li><li class="term_item" data-id="04:00" data-value="4:00 am">4:00 am</li><li class="term_item" data-id="05:00" data-value="5:00 am">5:00 am</li><li class="term_item" data-id="06:00" data-value="6:00 am">6:00 am</li><li class="term_item" data-id="07:00" data-value="7:00 am">7:00 am</li><li class="term_item" data-id="08:00" data-value="8:00 am">8:00 am</li><li class="term_item" data-id="09:00" data-value="9:00 am">9:00 am</li><li class="term_item" data-id="10:00" data-value="10:00 am">10:00 am</li><li class="term_item" data-id="11:00" data-value="11:00 am">11:00 am</li><li class="term_item" data-id="12:00" data-value="12:00 pm">12:00 pm</li><li class="term_item" data-id="13:00" data-value="1:00 pm">1:00 pm</li><li class="term_item" data-id="14:00" data-value="2:00 pm">2:00 pm</li><li class="term_item" data-id="15:00" data-value="3:00 pm">3:00 pm</li><li class="term_item" data-id="16:00" data-value="4:00 pm">4:00 pm</li><li class="term_item" data-id="17:00" data-value="5:00 pm">5:00 pm</li><li class="term_item" data-id="18:00" data-value="6:00 pm">6:00 pm</li><li class="term_item" data-id="19:00" data-value="7:00 pm">7:00 pm</li><li class="term_item" data-id="20:00" data-value="8:00 pm">8:00 pm</li><li class="term_item" data-id="21:00" data-value="9:00 pm">9:00 pm</li><li class="term_item" data-id="22:00" data-value="10:00 pm">10:00 pm</li><li class="term_item" data-id="23:00" data-value="11:00 pm">11:00 pm</li>
-                                            </ul>
-                                            <i class="fas fa-chevron-down"></i>
-                                        </div>
-                                    </div>
-                                </div>
+
 
                                 <div class="search-date is-active" data-inputfield="1" tabindex="0" data-active-0="1" data-title-0="Date to">
                                     <i class="ti-calendar "></i><input type="text" class="search_date" id="date_to" name="date_to" value="" placeholder="Date to">
                                 </div>
-                                <div class="input_select_field input_select_field_time_to  is-active" data-name="time_to" data-inputfield="1" data-active-0="1" tabindex="0">
-                                    <div class="input_select_title">
-                                        <div class="input_select_title_value">End at</div>
-                                        <div class="input_select_wrapper">
-                                            <input type="text" class="input_select_input" name="time_to_label" value="12:00 am">
-                                            <input type="hidden" class="input_select_input_value" name="time_to" value="00:00">
-                                            <ul class="input_select_list">
-                                                <li class="term_item term_item_selected" data-id="00:00" data-value="12:00 am">12:00 am</li><li class="term_item" data-id="01:00" data-value="1:00 am">1:00 am</li><li class="term_item" data-id="02:00" data-value="2:00 am">2:00 am</li><li class="term_item" data-id="03:00" data-value="3:00 am">3:00 am</li><li class="term_item" data-id="04:00" data-value="4:00 am">4:00 am</li><li class="term_item" data-id="05:00" data-value="5:00 am">5:00 am</li><li class="term_item" data-id="06:00" data-value="6:00 am">6:00 am</li><li class="term_item" data-id="07:00" data-value="7:00 am">7:00 am</li><li class="term_item" data-id="08:00" data-value="8:00 am">8:00 am</li><li class="term_item" data-id="09:00" data-value="9:00 am">9:00 am</li><li class="term_item" data-id="10:00" data-value="10:00 am">10:00 am</li><li class="term_item" data-id="11:00" data-value="11:00 am">11:00 am</li><li class="term_item" data-id="12:00" data-value="12:00 pm">12:00 pm</li><li class="term_item" data-id="13:00" data-value="1:00 pm">1:00 pm</li><li class="term_item" data-id="14:00" data-value="2:00 pm">2:00 pm</li><li class="term_item" data-id="15:00" data-value="3:00 pm">3:00 pm</li><li class="term_item" data-id="16:00" data-value="4:00 pm">4:00 pm</li><li class="term_item" data-id="17:00" data-value="5:00 pm">5:00 pm</li><li class="term_item" data-id="18:00" data-value="6:00 pm">6:00 pm</li><li class="term_item" data-id="19:00" data-value="7:00 pm">7:00 pm</li><li class="term_item" data-id="20:00" data-value="8:00 pm">8:00 pm</li><li class="term_item" data-id="21:00" data-value="9:00 pm">9:00 pm</li><li class="term_item" data-id="22:00" data-value="10:00 pm">10:00 pm</li><li class="term_item" data-id="23:00" data-value="11:00 pm">11:00 pm</li>
-                                            </ul>
-                                            <i class="fas fa-chevron-down"></i>
-                                        </div>
-                                    </div>
-                                </div>
+
 
                                 <div class="search_guests_field is-active" data-active-0="1" tabindex="0">
                                     <i class="ti-user"></i><div class="search_guests_title">Guests <span class="search_guests_title_value">0</span></div>
@@ -306,13 +289,16 @@
 
                     <div class="babe_price_slider"></div>
 
-                </div></aside><aside class="widget widget_babe_widget_search_filter_terms"><h2 class="widget-title">Amenities</h2><div class="widget-babe-search-filter-terms"><div id="filter_ba_amenities" class="babe-search-filter-terms">
-                    <div class="term_item term_item_level_0 term_item_checkbox" data-id="30" data-parent-id="0"><input type="checkbox" id="filter_ba_amenities_30" name="filter_ba_amenities[]" value="30"><label for="filter_ba_amenities_30">Air Condition</label></div><div class="term_item term_item_level_0 term_item_checkbox" data-id="31" data-parent-id="0"><input type="checkbox" id="filter_ba_amenities_31" name="filter_ba_amenities[]" value="31"><label for="filter_ba_amenities_31">Balcony</label></div><div class="term_item term_item_level_0 term_item_checkbox" data-id="32" data-parent-id="0"><input type="checkbox" id="filter_ba_amenities_32" name="filter_ba_amenities[]" value="32"><label for="filter_ba_amenities_32">Bedding</label></div><div class="term_item term_item_level_0 term_item_checkbox" data-id="33" data-parent-id="0"><input type="checkbox" id="filter_ba_amenities_33" name="filter_ba_amenities[]" value="33"><label for="filter_ba_amenities_33">Heating</label></div><div class="term_item term_item_level_0 term_item_checkbox" data-id="34" data-parent-id="0"><input type="checkbox" id="filter_ba_amenities_34" name="filter_ba_amenities[]" value="34"><label for="filter_ba_amenities_34">Internet</label></div><div class="term_item term_item_level_0 term_item_checkbox" data-id="35" data-parent-id="0"><input type="checkbox" id="filter_ba_amenities_35" name="filter_ba_amenities[]" value="35"><label for="filter_ba_amenities_35">Microwave</label></div><div class="term_item term_item_level_0 term_item_checkbox" data-id="36" data-parent-id="0"><input type="checkbox" id="filter_ba_amenities_36" name="filter_ba_amenities[]" value="36"><label for="filter_ba_amenities_36">Outdoor Seating</label></div><div class="term_item term_item_level_0 term_item_checkbox" data-id="37" data-parent-id="0"><input type="checkbox" id="filter_ba_amenities_37" name="filter_ba_amenities[]" value="37"><label for="filter_ba_amenities_37">Smoking Allow</label></div><div class="term_item term_item_level_0 term_item_checkbox" data-id="38" data-parent-id="0"><input type="checkbox" id="filter_ba_amenities_38" name="filter_ba_amenities[]" value="38"><label for="filter_ba_amenities_38">Terrace</label></div><div class="term_item term_item_level_0 term_item_checkbox" data-id="39" data-parent-id="0"><input type="checkbox" id="filter_ba_amenities_39" name="filter_ba_amenities[]" value="39"><label for="filter_ba_amenities_39">Valet Parking</label></div><div class="term_item term_item_level_0 term_item_checkbox" data-id="40" data-parent-id="0"><input type="checkbox" id="filter_ba_amenities_40" name="filter_ba_amenities[]" value="40"><label for="filter_ba_amenities_40">Wheelchair Accesible</label></div>
-                </div></div></aside><aside class="widget widget_babe_widget_search_filter_terms"><h2 class="widget-title">Destinations</h2><div class="widget-babe-search-filter-terms"><div id="filter_ba_destinations" class="babe-search-filter-terms">
-                    <div class="term_item term_item_level_0 term_item_checkbox" data-id="50" data-parent-id="0"><input type="checkbox" id="filter_ba_destinations_50" name="filter_ba_destinations[]" value="50"><label for="filter_ba_destinations_50">Amsterdam</label></div><div class="term_item term_item_level_0 term_item_checkbox" data-id="47" data-parent-id="0"><input type="checkbox" id="filter_ba_destinations_47" name="filter_ba_destinations[]" value="47"><label for="filter_ba_destinations_47">London</label></div><div class="term_item term_item_level_0 term_item_checkbox" data-id="48" data-parent-id="0"><input type="checkbox" id="filter_ba_destinations_48" name="filter_ba_destinations[]" value="48"><label for="filter_ba_destinations_48">New York</label></div><div class="term_item term_item_level_0 term_item_checkbox" data-id="49" data-parent-id="0"><input type="checkbox" id="filter_ba_destinations_49" name="filter_ba_destinations[]" value="49"><label for="filter_ba_destinations_49">Paris</label></div>
-                </div></div></aside><aside class="widget widget_babe_widget_search_filter_terms"><h2 class="widget-title">Language</h2><div class="widget-babe-search-filter-terms"><div id="filter_ba_language" class="babe-search-filter-terms">
-                    <div class="term_item term_item_level_0 term_item_checkbox" data-id="41" data-parent-id="0"><input type="checkbox" id="filter_ba_language_41" name="filter_ba_language[]" value="41"><label for="filter_ba_language_41">English</label></div><div class="term_item term_item_level_0 term_item_checkbox" data-id="42" data-parent-id="0"><input type="checkbox" id="filter_ba_language_42" name="filter_ba_language[]" value="42"><label for="filter_ba_language_42">French</label></div><div class="term_item term_item_level_0 term_item_checkbox" data-id="43" data-parent-id="0"><input type="checkbox" id="filter_ba_language_43" name="filter_ba_language[]" value="43"><label for="filter_ba_language_43">German</label></div><div class="term_item term_item_level_0 term_item_checkbox" data-id="44" data-parent-id="0"><input type="checkbox" id="filter_ba_language_44" name="filter_ba_language[]" value="44"><label for="filter_ba_language_44">Japanese</label></div><div class="term_item term_item_level_0 term_item_checkbox" data-id="45" data-parent-id="0"><input type="checkbox" id="filter_ba_language_45" name="filter_ba_language[]" value="45"><label for="filter_ba_language_45">Spanish</label></div>
-                </div></div></aside>			   					  	</aside>
+                </div></aside>
+                    <aside class="widget widget_babe_widget_search_filter_terms">attribute
+                    <h2 class="widget-title">Attribute</h2>
+                    <div class="widget-babe-search-filter-terms"><div id="filter_ba_amenities" class="babe-search-filter-terms" th:each="attribute: ${attributes}">
+                    <div class="term_item term_item_level_0 term_item_checkbox" data-id="30" data-parent-id="0">
+                        <input type="checkbox" id="filter_ba_amenities_30" name="attribute" value="30">
+                        <label for="filter_ba_amenities_30" th:text="${attribute.name}">Air Condition</label>
+                    </div>
+                </div></div></aside>
+                </aside>
             </div>
             <div id="main-content" class="main-page col-md-8 col-sm-12 col-xs-12">
                 <div id="main" class="site-main clearfix" role="main">
@@ -341,22 +327,31 @@
                             </div>
 
                         </div>
+
+<!--                        Product-->
+
                         <div class="babe_search_results_inner babe_search_results_inner_grid">
                             <div class="row">
-                                <div class="col-md-6 col-sm-6 col-xs-12 list-item  sm-clearfix md-clearfix lg-clearfix">
+                                <div class="col-md-6 col-sm-6 col-xs-12 list-item  sm-clearfix md-clearfix lg-clearfix" th:each="resultRoom:${resultRooms}">
 
                                     <div class="tour-grid tour-item-style">
                                         <div class="tour_info_price_discount">Save 5%</div>	<div class="inner">
                                         <div class="tour-image">
-                                            <a href="../book/architecture-yacht-cruise/index-1.htm?add_ids_ba_destinations=0&#038;date_from=&#038;date_to=&#038;guests%5B16%5D=0&#038;guests%5B17%5D=0&#038;guests%5B18%5D=0&#038;request_search_results=1&#038;search_results_sort_by=title_asc"><div class="image-wrapper"><img width="740" height="500" src="../wp-content/uploads/2020/09/des-3-740x500.jpg" class="attachment-travlio-grid-thumbnail size-travlio-grid-thumbnail" alt=""></div></a>		</div>
+                                            <a href="#">
+                                                <div class="image-wrapper"><img width="740" height="500" src="../wp-content/uploads/2020/09/des-3-740x500.jpg" class="attachment-travlio-grid-thumbnail size-travlio-grid-thumbnail" alt=""></div></a>		</div>
                                         <div class="tour-content">
                                             <div class="tour-title-wrapper">
                                                 <div class="flex">
                                                     <div class="tour-title-inner">
-                                                        <div class="tour-address"><i class="ti-location-pin"></i>31st Ave, East Elmhurst, NY</div>
-                                                        <h3 class="title"><a href="../book/architecture-yacht-cruise/index-1.htm?add_ids_ba_destinations=0&#038;date_from=&#038;date_to=&#038;guests%5B16%5D=0&#038;guests%5B17%5D=0&#038;guests%5B18%5D=0&#038;request_search_results=1&#038;search_results_sort_by=title_asc">Architecture Yacht Cruise</a></h3>
+                                                        <div class="tour-address"><i class="ti-location-pin"></i><span th:text="${resultRoom.getProduct().address}">Ave, East Elmhurst, NY</span> </div>
+                                                        <h3 class="title"><a th:href="@{'/resultRoom/' + ${resultRoom.id}}" th:text="${resultRoom.getProduct().name}"></a> Architecture Yacht Cruise</a></h3>
                                                         <div class="post-total-rating">
-                                                            <span class="post-total-rating-stars stars"><span class="star star-1" data-rating-val="1"><i class="fas fa-star"></i></span><span class="star star-2" data-rating-val="2"><i class="fas fa-star"></i></span><span class="star star-3" data-rating-val="3"><i class="fas fa-star"></i></span><span class="star star-4" data-rating-val="4"><i class="fas fa-star"></i></span><span class="star star-5" data-rating-val="5"><i class="fas fa-star"></i></span><span class="post-total-rating-value">5 </span></span>
+                                                            <span class="post-total-rating-stars stars"><span class="star star-1" data-rating-val="1"><i class="fas fa-star"></i></span>
+                                                                <span class="star star-2" data-rating-val="2"><i class="fas fa-star"></i></span>
+                                                                <span class="star star-3" data-rating-val="3"><i class="fas fa-star"></i></span>
+                                                                <span class="star star-4" data-rating-val="4"><i class="fas fa-star"></i></span>
+                                                                <span class="star star-5" data-rating-val="5"><i class="fas fa-star"></i></span>
+                                                                <span class="post-total-rating-value" th:text="${resultRoom.product.rating}">1</span></span>
                                                         </div>	               	</div>
 
                                                     <div class="tour-favorite ali-right">
@@ -371,214 +366,34 @@
 
                                             <div class="tour-tags-wrapper flex-middle">
 
-                                                <div class="tour-duration"><i class="ti-timer"></i>4 hours</div>
-
                                                 <div class="tour_info_price ali-right">
                                                     <i class="ti-bolt"></i><span class="price-label">From</span>
-                                                    <span class="tour_info_price_old"><span class="currency_amount" data-amount="180"><span class="currency_symbol">&#36;</span>180</span></span>					<span class="tour_info_price_new"><span class="currency_amount" data-amount="171"><span class="currency_symbol">&#36;</span>171</span></span>
+                                                    <span class="tour_info_price_old"><span class="currency_amount" data-amount="180">
+                                                        <span class="currency_symbol">&#36;</span>180</span></span>
+                                                    <span class="tour_info_price_new"><span class="currency_amount" data-amount="171">
+                                                        <span class="currency_symbol">&#36;</span><span th:text="${resultRoom.price}"></span></span></span>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    </div>                </div>
-                                <div class="col-md-6 col-sm-6 col-xs-12 list-item ">
-
-                                    <div class="tour-grid tour-item-style">
-                                        <div class="inner">
-                                            <div class="tour-image">
-                                                <a href="../book/central-park-tour/index-1.htm?add_ids_ba_destinations=0&#038;date_from=&#038;date_to=&#038;guests%5B16%5D=0&#038;guests%5B17%5D=0&#038;guests%5B18%5D=0&#038;request_search_results=1&#038;search_results_sort_by=title_asc"><div class="image-wrapper"><img width="740" height="500" src="../wp-content/uploads/2020/09/des-10-740x500.jpg" class="attachment-travlio-grid-thumbnail size-travlio-grid-thumbnail" alt=""></div></a>		</div>
-                                            <div class="tour-content">
-                                                <div class="tour-title-wrapper">
-                                                    <div class="flex">
-                                                        <div class="tour-title-inner">
-                                                            <div class="tour-address"><i class="ti-location-pin"></i>65 83rd St East Elmhurst, NY</div>
-                                                            <h3 class="title"><a href="../book/central-park-tour/index-1.htm?add_ids_ba_destinations=0&#038;date_from=&#038;date_to=&#038;guests%5B16%5D=0&#038;guests%5B17%5D=0&#038;guests%5B18%5D=0&#038;request_search_results=1&#038;search_results_sort_by=title_asc">Central Park Tour</a></h3>
-                                                            <div class="post-total-rating">
-                                                                <span class="post-total-rating-stars stars"><span class="star star-1" data-rating-val="1"><i class="fas fa-star"></i></span><span class="star star-2" data-rating-val="2"><i class="fas fa-star"></i></span><span class="star star-3" data-rating-val="3"><i class="fas fa-star"></i></span><span class="star star-4" data-rating-val="4"><i class="fas fa-star"></i></span><span class="star star-5" data-rating-val="5"><i class="far fa-star"></i></span><span class="post-total-rating-value">4 </span></span>
-                                                            </div>	               	</div>
-
-                                                        <div class="tour-favorite ali-right">
-                                                            <div class="listing-btn-wrapper listing-favorite">
-                                                                <a href="javascript:void(0);" class="apus-favorite-not-login" data-id="430">
-                                                                    <i class="ti-heart"></i>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="tour-tags-wrapper flex-middle">
-
-
-
-                                                    <div class="tour_info_price ali-right">
-                                                        <i class="ti-bolt"></i><span class="price-label">From</span>
-                                                        <span class="tour_info_price_new"><span class="currency_amount" data-amount="250"><span class="currency_symbol">&#36;</span>250</span></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>                </div>
-                                <div class="col-md-6 col-sm-6 col-xs-12 list-item  sm-clearfix md-clearfix lg-clearfix">
-
-                                    <div class="tour-grid tour-item-style">
-                                        <div class="inner">
-                                            <div class="tour-image">
-                                                <a href="../book/eiffel-tower-climbing/index.htm?add_ids_ba_destinations=0&#038;date_from=&#038;date_to=&#038;guests%5B16%5D=0&#038;guests%5B17%5D=0&#038;guests%5B18%5D=0&#038;request_search_results=1&#038;search_results_sort_by=title_asc"><div class="image-wrapper"><img width="740" height="500" src="../wp-content/uploads/2020/09/des-5-740x500.jpg" class="attachment-travlio-grid-thumbnail size-travlio-grid-thumbnail" alt=""></div></a>		</div>
-                                            <div class="tour-content">
-                                                <div class="tour-title-wrapper">
-                                                    <div class="flex">
-                                                        <div class="tour-title-inner">
-                                                            <div class="tour-address"><i class="ti-location-pin"></i>2-8 Rue de Hanovre, Paris</div>
-                                                            <h3 class="title"><a href="../book/eiffel-tower-climbing/index.htm?add_ids_ba_destinations=0&#038;date_from=&#038;date_to=&#038;guests%5B16%5D=0&#038;guests%5B17%5D=0&#038;guests%5B18%5D=0&#038;request_search_results=1&#038;search_results_sort_by=title_asc">Eiffel Tower Climbing</a></h3>
-                                                            <div class="post-total-rating">
-                                                                <span class="post-total-rating-stars stars"><span class="star star-1" data-rating-val="1"><i class="fas fa-star"></i></span><span class="star star-2" data-rating-val="2"><i class="fas fa-star"></i></span><span class="star star-3" data-rating-val="3"><i class="fas fa-star"></i></span><span class="star star-4" data-rating-val="4"><i class="fas fa-star"></i></span><span class="star star-5" data-rating-val="5"><i class="far fa-star"></i></span><span class="post-total-rating-value">4 </span></span>
-                                                            </div>	               	</div>
-
-                                                        <div class="tour-favorite ali-right">
-                                                            <div class="listing-btn-wrapper listing-favorite">
-                                                                <a href="javascript:void(0);" class="apus-favorite-not-login" data-id="434">
-                                                                    <i class="ti-heart"></i>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="tour-tags-wrapper flex-middle">
-
-
-
-                                                    <div class="tour_info_price ali-right">
-                                                        <i class="ti-bolt"></i><span class="price-label">From</span>
-                                                        <span class="tour_info_price_new"><span class="currency_amount" data-amount="210"><span class="currency_symbol">&#36;</span>210</span></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>                </div>
-                                <div class="col-md-6 col-sm-6 col-xs-12 list-item ">
-
-                                    <div class="tour-grid tour-item-style">
-                                        <div class="tour_info_price_discount">Save 10%</div>	<div class="inner">
-                                        <div class="tour-image">
-                                            <a href="../book/harry-potter-walking-tour/index-1.htm?add_ids_ba_destinations=0&#038;date_from=&#038;date_to=&#038;guests%5B16%5D=0&#038;guests%5B17%5D=0&#038;guests%5B18%5D=0&#038;request_search_results=1&#038;search_results_sort_by=title_asc"><div class="image-wrapper"><img width="740" height="500" src="../wp-content/uploads/2020/09/des-7-740x500.jpg" class="attachment-travlio-grid-thumbnail size-travlio-grid-thumbnail" alt=""></div></a>		</div>
-                                        <div class="tour-content">
-                                            <div class="tour-title-wrapper">
-                                                <div class="flex">
-                                                    <div class="tour-title-inner">
-                                                        <div class="tour-address"><i class="ti-location-pin"></i>33 High Holborn, London</div>
-                                                        <h3 class="title"><a href="../book/harry-potter-walking-tour/index-1.htm?add_ids_ba_destinations=0&#038;date_from=&#038;date_to=&#038;guests%5B16%5D=0&#038;guests%5B17%5D=0&#038;guests%5B18%5D=0&#038;request_search_results=1&#038;search_results_sort_by=title_asc">Harry Potter Walking Tour</a></h3>
-                                                        <div class="post-total-rating">
-                                                            <span class="post-total-rating-stars stars"><span class="star star-1" data-rating-val="1"><i class="fas fa-star"></i></span><span class="star star-2" data-rating-val="2"><i class="fas fa-star"></i></span><span class="star star-3" data-rating-val="3"><i class="fas fa-star"></i></span><span class="star star-4" data-rating-val="4"><i class="far fa-star"></i></span><span class="star star-5" data-rating-val="5"><i class="far fa-star"></i></span><span class="post-total-rating-value">3 </span></span>
-                                                        </div>	               	</div>
-
-                                                    <div class="tour-favorite ali-right">
-                                                        <div class="listing-btn-wrapper listing-favorite">
-                                                            <a href="javascript:void(0);" class="apus-favorite-not-login" data-id="427">
-                                                                <i class="ti-heart"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="tour-tags-wrapper flex-middle">
-
-                                                <div class="tour-duration"><i class="ti-timer"></i>5 hours</div>
-
-                                                <div class="tour_info_price ali-right">
-                                                    <i class="ti-bolt"></i><span class="price-label">From</span>
-                                                    <span class="tour_info_price_old"><span class="currency_amount" data-amount="110"><span class="currency_symbol">&#36;</span>110</span></span>					<span class="tour_info_price_new"><span class="currency_amount" data-amount="99"><span class="currency_symbol">&#36;</span>99</span></span>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
-                                    </div>                </div>
-                                <div class="col-md-6 col-sm-6 col-xs-12 list-item  sm-clearfix md-clearfix lg-clearfix">
-
-                                    <div class="tour-grid tour-item-style">
-                                        <div class="tour_info_price_discount">Save 5%</div>	<div class="inner">
-                                        <div class="tour-image">
-                                            <a href="../book/inside-park-bike-tour/index-1.htm?add_ids_ba_destinations=0&#038;date_from=&#038;date_to=&#038;guests%5B16%5D=0&#038;guests%5B17%5D=0&#038;guests%5B18%5D=0&#038;request_search_results=1&#038;search_results_sort_by=title_asc"><div class="image-wrapper"><img width="740" height="500" src="../wp-content/uploads/2020/09/g-3-740x500.jpg" class="attachment-travlio-grid-thumbnail size-travlio-grid-thumbnail" alt=""></div></a>		</div>
-                                        <div class="tour-content">
-                                            <div class="tour-title-wrapper">
-                                                <div class="flex">
-                                                    <div class="tour-title-inner">
-                                                        <div class="tour-address"><i class="ti-location-pin"></i>84th St East Elmhurst, NY</div>
-                                                        <h3 class="title"><a href="../book/inside-park-bike-tour/index-1.htm?add_ids_ba_destinations=0&#038;date_from=&#038;date_to=&#038;guests%5B16%5D=0&#038;guests%5B17%5D=0&#038;guests%5B18%5D=0&#038;request_search_results=1&#038;search_results_sort_by=title_asc">Inside Park Bike Tour</a></h3>
-                                                        <div class="post-total-rating">
-                                                            <span class="post-total-rating-stars stars"><span class="star star-1" data-rating-val="1"><i class="fas fa-star"></i></span><span class="star star-2" data-rating-val="2"><i class="fas fa-star"></i></span><span class="star star-3" data-rating-val="3"><i class="fas fa-star"></i></span><span class="star star-4" data-rating-val="4"><i class="fas fa-star"></i></span><span class="star star-5" data-rating-val="5"><i class="far fa-star"></i></span><span class="post-total-rating-value">4 </span></span>
-                                                        </div>	               	</div>
-
-                                                    <div class="tour-favorite ali-right">
-                                                        <div class="listing-btn-wrapper listing-favorite">
-                                                            <a href="javascript:void(0);" class="apus-favorite-not-login" data-id="432">
-                                                                <i class="ti-heart"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="tour-tags-wrapper flex-middle">
-
-                                                <div class="tour-duration"><i class="ti-timer"></i>7 hours</div>
-
-                                                <div class="tour_info_price ali-right">
-                                                    <i class="ti-bolt"></i><span class="price-label">From</span>
-                                                    <span class="tour_info_price_old"><span class="currency_amount" data-amount="95"><span class="currency_symbol">&#36;</span>95</span></span>					<span class="tour_info_price_new"><span class="currency_amount" data-amount="90.25"><span class="currency_symbol">&#36;</span>90.25</span></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    </div>                </div>
-                                <div class="col-md-6 col-sm-6 col-xs-12 list-item ">
-
-                                    <div class="tour-grid tour-item-style">
-                                        <div class="inner">
-                                            <div class="tour-image">
-                                                <a href="../book/manhattan-sky-tour/index-1.htm?add_ids_ba_destinations=0&#038;date_from=&#038;date_to=&#038;guests%5B16%5D=0&#038;guests%5B17%5D=0&#038;guests%5B18%5D=0&#038;request_search_results=1&#038;search_results_sort_by=title_asc"><div class="image-wrapper"><img width="740" height="500" src="../wp-content/uploads/2020/09/des-11-740x500.jpg" class="attachment-travlio-grid-thumbnail size-travlio-grid-thumbnail" alt=""></div></a>		</div>
-                                            <div class="tour-content">
-                                                <div class="tour-title-wrapper">
-                                                    <div class="flex">
-                                                        <div class="tour-title-inner">
-                                                            <div class="tour-address"><i class="ti-location-pin"></i>31st Ave East Elmhurst, NY</div>
-                                                            <h3 class="title"><a href="../book/manhattan-sky-tour/index-1.htm?add_ids_ba_destinations=0&#038;date_from=&#038;date_to=&#038;guests%5B16%5D=0&#038;guests%5B17%5D=0&#038;guests%5B18%5D=0&#038;request_search_results=1&#038;search_results_sort_by=title_asc">Manhattan Sky Tour</a></h3>
-                                                            <div class="post-total-rating">
-                                                                <span class="post-total-rating-stars stars"><span class="star star-1" data-rating-val="1"><i class="fas fa-star"></i></span><span class="star star-2" data-rating-val="2"><i class="fas fa-star"></i></span><span class="star star-3" data-rating-val="3"><i class="fas fa-star"></i></span><span class="star star-4" data-rating-val="4"><i class="far fa-star"></i></span><span class="star star-5" data-rating-val="5"><i class="far fa-star"></i></span><span class="post-total-rating-value">3 </span></span>
-                                                            </div>	               	</div>
-
-                                                        <div class="tour-favorite ali-right">
-                                                            <div class="listing-btn-wrapper listing-favorite">
-                                                                <a href="javascript:void(0);" class="apus-favorite-not-login" data-id="431">
-                                                                    <i class="ti-heart"></i>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="tour-tags-wrapper flex-middle">
-
-                                                    <div class="tour-duration"><i class="ti-timer"></i>4 hours</div>
-
-                                                    <div class="tour_info_price ali-right">
-                                                        <i class="ti-bolt"></i><span class="price-label">From</span>
-                                                        <span class="tour_info_price_new"><span class="currency_amount" data-amount="60"><span class="currency_symbol">&#36;</span>60</span></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>                </div>
+                                </div>
                             </div>
 
                         </div>
-                    </div><div class="babe_pager"><span aria-current="page" class="page-numbers current">1</span>
-                    <a class="page-numbers" href="page/2/index.htm?add_ids_ba_destinations=0&#038;date_from&#038;date_to&#038;guests%5B16%5D=0&#038;guests%5B17%5D=0&#038;guests%5B18%5D=0&#038;request_search_results=1&#038;search_results_sort_by=title_asc&#038;paged=2">2</a>
-                    <a class="next page-numbers" href="page/2/index.htm?add_ids_ba_destinations=0&#038;date_from&#038;date_to&#038;guests%5B16%5D=0&#038;guests%5B17%5D=0&#038;guests%5B18%5D=0&#038;request_search_results=1&#038;search_results_sort_by=title_asc&#038;paged=2">Next &raquo;</a></div><div id="babe_search_result_refresh">
+                    </div>
+
+
+<!--                    Page-->
+
+                    <div class="babe_pager">
+                        <span aria-current="page" class="page-numbers current">1</span>
+                    <a class="page-numbers" href="#">2</a>
+                    <a class="next page-numbers" href="#">Next &raquo;</a></div><div id="babe_search_result_refresh">
                     <i class="fas fa-spinner fa-spin fa-3x"></i>
-                </div>			</div><!-- .site-main -->
+                </div>
+
+                </div><!-- .site-main -->
             </div><!-- .content-area -->
         </div>
     </section>
@@ -586,58 +401,7 @@
     <div id="apus-footer" class="apus-footer footer-builder-wrapper footer-1"><div class="apus-footer-inner">		<div data-elementor-type="wp-post" data-elementor-id="110" class="elementor elementor-110" data-elementor-settings="[]">
         <div class="elementor-inner">
             <div class="elementor-section-wrap">
-                <section class="elementor-section elementor-top-section elementor-element elementor-element-79ff50a elementor-section-stretched elementor-section-content-middle elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="79ff50a" data-element_type="section" data-settings="{&quot;stretch_section&quot;:&quot;section-stretched&quot;,&quot;background_background&quot;:&quot;classic&quot;}">
-                    <div class="elementor-container elementor-column-gap-extended">
-                        <div class="elementor-row">
-                            <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-5c83ce0" data-id="5c83ce0" data-element_type="column">
-                                <div class="elementor-column-wrap elementor-element-populated">
-                                    <div class="elementor-widget-wrap">
-                                        <div class="elementor-element elementor-element-2ef5803 elementor-widget elementor-widget-heading" data-id="2ef5803" data-element_type="widget" data-widget_type="heading.default">
-                                            <div class="elementor-widget-container">
-                                                <h2 class="elementor-heading-title elementor-size-default">Get New Jobs Notification!</h2>		</div>
-                                        </div>
-                                        <div class="elementor-element elementor-element-7eac270 elementor-widget elementor-widget-heading" data-id="7eac270" data-element_type="widget" data-widget_type="heading.default">
-                                            <div class="elementor-widget-container">
-                                                <div class="elementor-heading-title elementor-size-default">Subscribe & get all related jobs notification.</div>		</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-7aa3a53" data-id="7aa3a53" data-element_type="column">
-                                <div class="elementor-column-wrap elementor-element-populated">
-                                    <div class="elementor-widget-wrap">
-                                        <div class="elementor-element elementor-element-3ae95ab elementor-widget elementor-widget-apus_element_mailchimp" data-id="3ae95ab" data-element_type="widget" data-widget_type="apus_element_mailchimp.default">
-                                            <div class="elementor-widget-container">
-                                                <div class="widget-mailchimp widget no-margin  ">
-                                                    <script>(function() {
-                                                        window.mc4wp = window.mc4wp || {
-                                                            listeners: [],
-                                                            forms: {
-                                                                on: function(evt, cb) {
-                                                                    window.mc4wp.listeners.push(
-                                                                        {
-                                                                            event   : evt,
-                                                                            callback: cb
-                                                                        }
-                                                                    );
-                                                                }
-                                                            }
-                                                        }
-                                                    })();
-                                                    </script><!-- Mailchimp for WordPress v4.8.1 - https://wordpress.org/plugins/mailchimp-for-wp/ --><form id="mc4wp-form-1" class="mc4wp-form mc4wp-form-131" method="post" data-id="131" data-name=""><div class="mc4wp-form-fields"><div class="input-group">
-                                                    <input type="email" name="EMAIL" class="form-control" placeholder="Enter your Email..">
-                                                    <span class="input-group-btn">
-          <button type="submit" class="btn btn-second">Subscribe</button>
-      </span>
-                                                </div></div><label style="display: none !important;">Leave this field empty if you're human: <input type="text" name="_mc4wp_honeypot" value="" tabindex="-1" autocomplete="off"></label><input type="hidden" name="_mc4wp_timestamp" value="1664140820"><input type="hidden" name="_mc4wp_form_id" value="131"><input type="hidden" name="_mc4wp_form_element_id" value="mc4wp-form-1"><div class="mc4wp-response"></div></form><!-- / Mailchimp for WordPress Plugin -->        </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                
                 <section class="elementor-section elementor-top-section elementor-element elementor-element-531c8ed elementor-section-stretched elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="531c8ed" data-element_type="section" data-settings="{&quot;stretch_section&quot;:&quot;section-stretched&quot;,&quot;background_background&quot;:&quot;classic&quot;}">
                     <div class="elementor-container elementor-column-gap-extended">
                         <div class="elementor-row">

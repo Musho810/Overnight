@@ -8,7 +8,7 @@
 
     <title>OVERNIGHT</title>
 
-    <th:block th:insert="/fragments/fragment::headerImport"></th:block>
+<th:block th:insert="/fragments/fragment::headerImport"></th:block>
 </head>
 <body class="home page-template-default page page-id-32 wp-embed-responsive apus-body-loading body-footer-mobile elementor-default elementor-kit-107 elementor-page elementor-page-32">
 <div class="apus-page-loading">
@@ -61,7 +61,7 @@
     </div>
     <div class="over-dark"></div>
 
-    <th:block th:insert="/fragments/fragment::headerMenu"></th:block>
+    <th:block th:insert="/fragments/fragment::headerMenu" ></th:block>
 
     <div id="apus-main-content">
         <section id="main-container" class="container inner">
@@ -115,448 +115,432 @@
                                                                  data-widget_type="wp-widget-babe_widget_search_form.default">
                                                                 <div class="elementor-widget-container">
                                                                     <div id="search-box" class="babe-search-box ">
-                                                                        <div class="add_ids_title">
+                                                                                    <div class="add_ids_title" >
 
 
-                                                                            <form name="search_form"
-                                                                                  action="/search-result"
-                                                                                  method="get" id="search_form"
-                                                                                  class="babe-search-form ">
-                                                                                <div class="input-group">
-                                                                                    <div class="add_input_field is-active"
-                                                                                         data-inputfield="1"
-                                                                                         tabindex="0"
-                                                                                         data-active-0="1"
-                                                                                         data-title-0=""
-                                                                                         data-tax="ba_destinations">
+                                                                        <form name="search_form"
+                                                                              action="/search-result"
+                                                                              method="get" id="search_form"
+                                                                              class="babe-search-form ">
+                                                                            <div class="input-group">
+                                                                                <div class="add_input_field is-active"
+                                                                                     data-inputfield="1" tabindex="0"
+                                                                                     data-active-0="1" data-title-0=""
+                                                                                     data-tax="ba_destinations">
 
-                                                                                        <div class="add_ids_title">
-                                                                                            <div class="add_ids_title_value"
-                                                                                                 th:text="#{main.searche}">
-                                                                                                Բոլոր ուղղությունները
-                                                                                            </div>
-                                                                                            <i class="fas fa-chevron-down"></i>
-                                                                                            <ul id="add_ids_list_ba_destinations"
-                                                                                                class="add_ids_list"
-                                                                                                data-parent="0">
-                                                                                                <li class="term_item term_item_all"
-                                                                                                    data-id="0"
-                                                                                                    th:text="#{main.searche}"
-                                                                                                    All
-                                                                                                    Destinations>
-                                                                                                </li>
-                                                                                                <li class="term_item term_item_level_0"
-                                                                                                    th:each="region:${regions}"
-                                                                                                    th:attr="data-id=${region.id}"
-                                                                                                    th:text="${region.getName()}">
-                                                                                                </li>
-                                                                                            </ul>
+                                                                                    <div class="add_ids_title">
+                                                                                        <div class="add_ids_title_value" th:text="#{main.searche}">
+                                                                                            Բոլոր ուղղությունները
+                                                                                        </div>
+                                                                                        <i class="fas fa-chevron-down"></i>
+                                                                                        <ul id="add_ids_list_ba_destinations"
+                                                                                            class="add_ids_list"
+                                                                                            data-parent="0">
+                                                                                            <li class="term_item term_item_all"
+                                                                                                data-id="0" th:text="#{main.searche}" All
+                                                                                                Destinations>
+                                                                                            </li>
+                                                                                            <li class="term_item term_item_level_0"
+                                                                                                 th:each="region:${regions}"
+                                                                                                th:attr="data-id=${region.id}"
+                                                                                                th:text="${region.getName()}">
+                                                                                            </li>
+                                                                                        </ul>
+                                                                                        <input type="hidden"
+                                                                                               class="input_select_input_value"
+                                                                                               name="region"
+                                                                                               value="0">
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="search-date is-active"
+                                                                                     data-inputfield="1" tabindex="0"
+                                                                                     data-active-0="1"
+                                                                                     data-title-0="Date Form">
+                                                                                    <i class="ti-calendar "></i><input
+                                                                                        type="text" class="search_date"
+                                                                                        id="date_from" name="dateFrom"
+                                                                                        th:placeholder="#{main.datefrom}"/>
+                                                                                </div>
+<!--                                                                                <div class="input_select_field input_select_field_time_from  is-active"-->
+<!--                                                                                     data-name="time_from"-->
+<!--                                                                                     data-inputfield="1"-->
+<!--                                                                                     data-active-0="1" tabindex="0" >-->
+<!--                                                                                    <div class="input_select_title">-->
+<!--                                                                                        <div class="input_select_title_value" th:text="#{main.startat}">-->
+<!--                                                                                            Start at-->
+<!--                                                                                        </div>-->
+<!--                                                                                        <div class="input_select_wrapper">-->
+<!--                                                                                            <input type="text"-->
+<!--                                                                                                   class="input_select_input"-->
+<!--                                                                                                   name="time_from_label"-->
+<!--                                                                                                   value="12:00 am">-->
+<!--                                                                                            <input type="hidden"-->
+<!--                                                                                                   class="input_select_input_value"-->
+<!--                                                                                                   name="timeFrom"-->
+<!--                                                                                                   value="00:00">-->
+<!--                                                                                            <ul class="input_select_list">-->
+<!--                                                                                                <li class="term_item term_item_selected"-->
+<!--                                                                                                    data-id="00:00"-->
+<!--                                                                                                    data-value="12:00 am">-->
+<!--                                                                                                    12:00 am-->
+<!--                                                                                                </li>-->
+<!--                                                                                                <li class="term_item"-->
+<!--                                                                                                    data-id="01:00"-->
+<!--                                                                                                    data-value="1:00 am">-->
+<!--                                                                                                    1:00 am-->
+<!--                                                                                                </li>-->
+<!--                                                                                                <li class="term_item"-->
+<!--                                                                                                    data-id="02:00"-->
+<!--                                                                                                    data-value="2:00 am">-->
+<!--                                                                                                    2:00 am-->
+<!--                                                                                                </li>-->
+<!--                                                                                                <li class="term_item"-->
+<!--                                                                                                    data-id="03:00"-->
+<!--                                                                                                    data-value="3:00 am">-->
+<!--                                                                                                    3:00 am-->
+<!--                                                                                                </li>-->
+<!--                                                                                                <li class="term_item"-->
+<!--                                                                                                    data-id="04:00"-->
+<!--                                                                                                    data-value="4:00 am">-->
+<!--                                                                                                    4:00 am-->
+<!--                                                                                                </li>-->
+<!--                                                                                                <li class="term_item"-->
+<!--                                                                                                    data-id="05:00"-->
+<!--                                                                                                    data-value="5:00 am">-->
+<!--                                                                                                    5:00 am-->
+<!--                                                                                                </li>-->
+<!--                                                                                                <li class="term_item"-->
+<!--                                                                                                    data-id="06:00"-->
+<!--                                                                                                    data-value="6:00 am">-->
+<!--                                                                                                    6:00 am-->
+<!--                                                                                                </li>-->
+<!--                                                                                                <li class="term_item"-->
+<!--                                                                                                    data-id="07:00"-->
+<!--                                                                                                    data-value="7:00 am">-->
+<!--                                                                                                    7:00 am-->
+<!--                                                                                                </li>-->
+<!--                                                                                                <li class="term_item"-->
+<!--                                                                                                    data-id="08:00"-->
+<!--                                                                                                    data-value="8:00 am">-->
+<!--                                                                                                    8:00 am-->
+<!--                                                                                                </li>-->
+<!--                                                                                                <li class="term_item"-->
+<!--                                                                                                    data-id="09:00"-->
+<!--                                                                                                    data-value="9:00 am">-->
+<!--                                                                                                    9:00 am-->
+<!--                                                                                                </li>-->
+<!--                                                                                                <li class="term_item"-->
+<!--                                                                                                    data-id="10:00"-->
+<!--                                                                                                    data-value="10:00 am">-->
+<!--                                                                                                    10:00 am-->
+<!--                                                                                                </li>-->
+<!--                                                                                                <li class="term_item"-->
+<!--                                                                                                    data-id="11:00"-->
+<!--                                                                                                    data-value="11:00 am">-->
+<!--                                                                                                    11:00 am-->
+<!--                                                                                                </li>-->
+<!--                                                                                                <li class="term_item"-->
+<!--                                                                                                    data-id="12:00"-->
+<!--                                                                                                    data-value="12:00 pm">-->
+<!--                                                                                                    12:00 pm-->
+<!--                                                                                                </li>-->
+<!--                                                                                                <li class="term_item"-->
+<!--                                                                                                    data-id="13:00"-->
+<!--                                                                                                    data-value="1:00 pm">-->
+<!--                                                                                                    1:00 pm-->
+<!--                                                                                                </li>-->
+<!--                                                                                                <li class="term_item"-->
+<!--                                                                                                    data-id="14:00"-->
+<!--                                                                                                    data-value="2:00 pm">-->
+<!--                                                                                                    2:00 pm-->
+<!--                                                                                                </li>-->
+<!--                                                                                                <li class="term_item"-->
+<!--                                                                                                    data-id="15:00"-->
+<!--                                                                                                    data-value="3:00 pm">-->
+<!--                                                                                                    3:00 pm-->
+<!--                                                                                                </li>-->
+<!--                                                                                                <li class="term_item"-->
+<!--                                                                                                    data-id="16:00"-->
+<!--                                                                                                    data-value="4:00 pm">-->
+<!--                                                                                                    4:00 pm-->
+<!--                                                                                                </li>-->
+<!--                                                                                                <li class="term_item"-->
+<!--                                                                                                    data-id="17:00"-->
+<!--                                                                                                    data-value="5:00 pm">-->
+<!--                                                                                                    5:00 pm-->
+<!--                                                                                                </li>-->
+<!--                                                                                                <li class="term_item"-->
+<!--                                                                                                    data-id="18:00"-->
+<!--                                                                                                    data-value="6:00 pm">-->
+<!--                                                                                                    6:00 pm-->
+<!--                                                                                                </li>-->
+<!--                                                                                                <li class="term_item"-->
+<!--                                                                                                    data-id="19:00"-->
+<!--                                                                                                    data-value="7:00 pm">-->
+<!--                                                                                                    7:00 pm-->
+<!--                                                                                                </li>-->
+<!--                                                                                                <li class="term_item"-->
+<!--                                                                                                    data-id="20:00"-->
+<!--                                                                                                    data-value="8:00 pm">-->
+<!--                                                                                                    8:00 pm-->
+<!--                                                                                                </li>-->
+<!--                                                                                                <li class="term_item"-->
+<!--                                                                                                    data-id="21:00"-->
+<!--                                                                                                    data-value="9:00 pm">-->
+<!--                                                                                                    9:00 pm-->
+<!--                                                                                                </li>-->
+<!--                                                                                                <li class="term_item"-->
+<!--                                                                                                    data-id="22:00"-->
+<!--                                                                                                    data-value="10:00 pm">-->
+<!--                                                                                                    10:00 pm-->
+<!--                                                                                                </li>-->
+<!--                                                                                                <li class="term_item"-->
+<!--                                                                                                    data-id="23:00"-->
+<!--                                                                                                    data-value="11:00 pm">-->
+<!--                                                                                                    11:00 pm-->
+<!--                                                                                                </li>-->
+<!--                                                                                            </ul>-->
+<!--                                                                                            <i class="fas fa-chevron-down"></i>-->
+<!--                                                                                        </div>-->
+<!--                                                                                    </div>-->
+<!--                                                                                </div>-->
+
+                                                                                <div class="search-date is-active"
+                                                                                     data-inputfield="1" tabindex="0"
+                                                                                     data-active-0="1"
+                                                                                     data-title-0="Ելք">
+                                                                                    <i class="ti-calendar "></i><input
+                                                                                        type="text" class="search_date"
+                                                                                        id="date_to" name="dateTo"  th:placeholder="#{main.dateto}">
+                                                                                </div>
+<!--                                                                                <div class="input_select_field input_select_field_time_to  is-active"-->
+<!--                                                                                     data-name="time_to"-->
+<!--                                                                                     data-inputfield="1"-->
+<!--                                                                                     data-active-0="1" tabindex="0">-->
+<!--                                                                                    <div class="input_select_title">-->
+<!--                                                                                        <div class="input_select_title_value" th:text="#{main.endat}">-->
+<!--                                                                                            End at-->
+<!--                                                                                        </div>-->
+<!--                                                                                        <div class="input_select_wrapper">-->
+<!--                                                                                            <input type="text"-->
+<!--                                                                                                   class="input_select_input"-->
+<!--                                                                                                   name="time_to_label"-->
+<!--                                                                                                   value="12:00 am">-->
+<!--                                                                                            <input type="hidden"-->
+<!--                                                                                                   class="input_select_input_value"-->
+<!--                                                                                                   name="timeTo"-->
+<!--                                                                                                   value="00:00">-->
+<!--                                                                                            <ul class="input_select_list">-->
+<!--                                                                                                <li class="term_item term_item_selected"-->
+<!--                                                                                                    data-id="00:00"-->
+<!--                                                                                                    data-value="12:00 am">-->
+<!--                                                                                                    12:00 am-->
+<!--                                                                                                </li>-->
+<!--                                                                                                <li class="term_item"-->
+<!--                                                                                                    data-id="01:00"-->
+<!--                                                                                                    data-value="1:00 am">-->
+<!--                                                                                                    1:00 am-->
+<!--                                                                                                </li>-->
+<!--                                                                                                <li class="term_item"-->
+<!--                                                                                                    data-id="02:00"-->
+<!--                                                                                                    data-value="2:00 am">-->
+<!--                                                                                                    2:00 am-->
+<!--                                                                                                </li>-->
+<!--                                                                                                <li class="term_item"-->
+<!--                                                                                                    data-id="03:00"-->
+<!--                                                                                                    data-value="3:00 am">-->
+<!--                                                                                                    3:00 am-->
+<!--                                                                                                </li>-->
+<!--                                                                                                <li class="term_item"-->
+<!--                                                                                                    data-id="04:00"-->
+<!--                                                                                                    data-value="4:00 am">-->
+<!--                                                                                                    4:00 am-->
+<!--                                                                                                </li>-->
+<!--                                                                                                <li class="term_item"-->
+<!--                                                                                                    data-id="05:00"-->
+<!--                                                                                                    data-value="5:00 am">-->
+<!--                                                                                                    5:00 am-->
+<!--                                                                                                </li>-->
+<!--                                                                                                <li class="term_item"-->
+<!--                                                                                                    data-id="06:00"-->
+<!--                                                                                                    data-value="6:00 am">-->
+<!--                                                                                                    6:00 am-->
+<!--                                                                                                </li>-->
+<!--                                                                                                <li class="term_item"-->
+<!--                                                                                                    data-id="07:00"-->
+<!--                                                                                                    data-value="7:00 am">-->
+<!--                                                                                                    7:00 am-->
+<!--                                                                                                </li>-->
+<!--                                                                                                <li class="term_item"-->
+<!--                                                                                                    data-id="08:00"-->
+<!--                                                                                                    data-value="8:00 am">-->
+<!--                                                                                                    8:00 am-->
+<!--                                                                                                </li>-->
+<!--                                                                                                <li class="term_item"-->
+<!--                                                                                                    data-id="09:00"-->
+<!--                                                                                                    data-value="9:00 am">-->
+<!--                                                                                                    9:00 am-->
+<!--                                                                                                </li>-->
+<!--                                                                                                <li class="term_item"-->
+<!--                                                                                                    data-id="10:00"-->
+<!--                                                                                                    data-value="10:00 am">-->
+<!--                                                                                                    10:00 am-->
+<!--                                                                                                </li>-->
+<!--                                                                                                <li class="term_item"-->
+<!--                                                                                                    data-id="11:00"-->
+<!--                                                                                                    data-value="11:00 am">-->
+<!--                                                                                                    11:00 am-->
+<!--                                                                                                </li>-->
+<!--                                                                                                <li class="term_item"-->
+<!--                                                                                                    data-id="12:00"-->
+<!--                                                                                                    data-value="12:00 pm">-->
+<!--                                                                                                    12:00 pm-->
+<!--                                                                                                </li>-->
+<!--                                                                                                <li class="term_item"-->
+<!--                                                                                                    data-id="13:00"-->
+<!--                                                                                                    data-value="1:00 pm">-->
+<!--                                                                                                    1:00 pm-->
+<!--                                                                                                </li>-->
+<!--                                                                                                <li class="term_item"-->
+<!--                                                                                                    data-id="14:00"-->
+<!--                                                                                                    data-value="2:00 pm">-->
+<!--                                                                                                    2:00 pm-->
+<!--                                                                                                </li>-->
+<!--                                                                                                <li class="term_item"-->
+<!--                                                                                                    data-id="15:00"-->
+<!--                                                                                                    data-value="3:00 pm">-->
+<!--                                                                                                    3:00 pm-->
+<!--                                                                                                </li>-->
+<!--                                                                                                <li class="term_item"-->
+<!--                                                                                                    data-id="16:00"-->
+<!--                                                                                                    data-value="4:00 pm">-->
+<!--                                                                                                    4:00 pm-->
+<!--                                                                                                </li>-->
+<!--                                                                                                <li class="term_item"-->
+<!--                                                                                                    data-id="17:00"-->
+<!--                                                                                                    data-value="5:00 pm">-->
+<!--                                                                                                    5:00 pm-->
+<!--                                                                                                </li>-->
+<!--                                                                                                <li class="term_item"-->
+<!--                                                                                                    data-id="18:00"-->
+<!--                                                                                                    data-value="6:00 pm">-->
+<!--                                                                                                    6:00 pm-->
+<!--                                                                                                </li>-->
+<!--                                                                                                <li class="term_item"-->
+<!--                                                                                                    data-id="19:00"-->
+<!--                                                                                                    data-value="7:00 pm">-->
+<!--                                                                                                    7:00 pm-->
+<!--                                                                                                </li>-->
+<!--                                                                                                <li class="term_item"-->
+<!--                                                                                                    data-id="20:00"-->
+<!--                                                                                                    data-value="8:00 pm">-->
+<!--                                                                                                    8:00 pm-->
+<!--                                                                                                </li>-->
+<!--                                                                                                <li class="term_item"-->
+<!--                                                                                                    data-id="21:00"-->
+<!--                                                                                                    data-value="9:00 pm">-->
+<!--                                                                                                    9:00 pm-->
+<!--                                                                                                </li>-->
+<!--                                                                                                <li class="term_item"-->
+<!--                                                                                                    data-id="22:00"-->
+<!--                                                                                                    data-value="10:00 pm">-->
+<!--                                                                                                    10:00 pm-->
+<!--                                                                                                </li>-->
+<!--                                                                                                <li class="term_item"-->
+<!--                                                                                                    data-id="23:00"-->
+<!--                                                                                                    data-value="11:00 pm">-->
+<!--                                                                                                    11:00 pm-->
+<!--                                                                                                </li>-->
+<!--                                                                                            </ul>-->
+<!--                                                                                            <i class="fas fa-chevron-down"></i>-->
+<!--                                                                                        </div>-->
+<!--                                                                                    </div>-->
+<!--                                                                                </div>-->
+
+
+<!--                                                                                search-->
+                                                                                <div class="search_guests_field is-active"
+                                                                                     data-active-0="1" tabindex="1">
+                                                                                    <i class="ti-user"></i>
+                                                                                    <div class="search_guests_title" ><span th:text="#{main.guests}"></span>
+                                                                                         <span
+                                                                                            class="search_guests_title_value">1</span>
+                                                                                    </div>
+                                                                                    <div class="search_guests_select_wrapper">
+
+                                                                                        <div class="input_select_field input_select_field_guests is-active"
+                                                                                             data-name="guests[16]"
+                                                                                             data-inputfield="1"
+                                                                                             tabindex="0"
+                                                                                             data-active-0="1">
+                                                                                            <span class="select_guests_value">1</span>
+                                                                                            <span class="select_guests_title" th:text="#{main.adult}">Մեծահասակ</span>
+                                                                                            <span class="search_guests_plus btn-search-guests-change btn btn-secondary-outlined"
+                                                                                                  tabindex="0"><i
+                                                                                                    class="fas fa-plus"></i></span>
+                                                                                            <span class="search_guests_minus btn-search-guests-change btn btn-secondary-outlined"
+                                                                                                  tabindex="0"><i
+                                                                                                    class="fas fa-minus"></i></span>
                                                                                             <input type="hidden"
-                                                                                                   class="input_select_input_value"
-                                                                                                   name="region"
+                                                                                                   class="select_guests_input_value"
+                                                                                                   name="guestsAdult"
                                                                                                    value="0">
                                                                                         </div>
-                                                                                    </div>
-                                                                                    <div class="search-date is-active"
-                                                                                         data-inputfield="1"
-                                                                                         tabindex="0"
-                                                                                         data-active-0="1"
-                                                                                         data-title-0="Date Form">
-                                                                                        <i class="ti-calendar "></i><input
-                                                                                            type="text"
-                                                                                            class="search_date"
-                                                                                            id="date_from"
-                                                                                            name="dateFrom"
-                                                                                            th:placeholder="#{main.datefrom}"/>
-                                                                                    </div>
-                                                                                    <!--                                                                                <div class="input_select_field input_select_field_time_from  is-active"-->
-                                                                                    <!--                                                                                     data-name="time_from"-->
-                                                                                    <!--                                                                                     data-inputfield="1"-->
-                                                                                    <!--                                                                                     data-active-0="1" tabindex="0" >-->
-                                                                                    <!--                                                                                    <div class="input_select_title">-->
-                                                                                    <!--                                                                                        <div class="input_select_title_value" th:text="#{main.startat}">-->
-                                                                                    <!--                                                                                            Start at-->
-                                                                                    <!--                                                                                        </div>-->
-                                                                                    <!--                                                                                        <div class="input_select_wrapper">-->
-                                                                                    <!--                                                                                            <input type="text"-->
-                                                                                    <!--                                                                                                   class="input_select_input"-->
-                                                                                    <!--                                                                                                   name="time_from_label"-->
-                                                                                    <!--                                                                                                   value="12:00 am">-->
-                                                                                    <!--                                                                                            <input type="hidden"-->
-                                                                                    <!--                                                                                                   class="input_select_input_value"-->
-                                                                                    <!--                                                                                                   name="timeFrom"-->
-                                                                                    <!--                                                                                                   value="00:00">-->
-                                                                                    <!--                                                                                            <ul class="input_select_list">-->
-                                                                                    <!--                                                                                                <li class="term_item term_item_selected"-->
-                                                                                    <!--                                                                                                    data-id="00:00"-->
-                                                                                    <!--                                                                                                    data-value="12:00 am">-->
-                                                                                    <!--                                                                                                    12:00 am-->
-                                                                                    <!--                                                                                                </li>-->
-                                                                                    <!--                                                                                                <li class="term_item"-->
-                                                                                    <!--                                                                                                    data-id="01:00"-->
-                                                                                    <!--                                                                                                    data-value="1:00 am">-->
-                                                                                    <!--                                                                                                    1:00 am-->
-                                                                                    <!--                                                                                                </li>-->
-                                                                                    <!--                                                                                                <li class="term_item"-->
-                                                                                    <!--                                                                                                    data-id="02:00"-->
-                                                                                    <!--                                                                                                    data-value="2:00 am">-->
-                                                                                    <!--                                                                                                    2:00 am-->
-                                                                                    <!--                                                                                                </li>-->
-                                                                                    <!--                                                                                                <li class="term_item"-->
-                                                                                    <!--                                                                                                    data-id="03:00"-->
-                                                                                    <!--                                                                                                    data-value="3:00 am">-->
-                                                                                    <!--                                                                                                    3:00 am-->
-                                                                                    <!--                                                                                                </li>-->
-                                                                                    <!--                                                                                                <li class="term_item"-->
-                                                                                    <!--                                                                                                    data-id="04:00"-->
-                                                                                    <!--                                                                                                    data-value="4:00 am">-->
-                                                                                    <!--                                                                                                    4:00 am-->
-                                                                                    <!--                                                                                                </li>-->
-                                                                                    <!--                                                                                                <li class="term_item"-->
-                                                                                    <!--                                                                                                    data-id="05:00"-->
-                                                                                    <!--                                                                                                    data-value="5:00 am">-->
-                                                                                    <!--                                                                                                    5:00 am-->
-                                                                                    <!--                                                                                                </li>-->
-                                                                                    <!--                                                                                                <li class="term_item"-->
-                                                                                    <!--                                                                                                    data-id="06:00"-->
-                                                                                    <!--                                                                                                    data-value="6:00 am">-->
-                                                                                    <!--                                                                                                    6:00 am-->
-                                                                                    <!--                                                                                                </li>-->
-                                                                                    <!--                                                                                                <li class="term_item"-->
-                                                                                    <!--                                                                                                    data-id="07:00"-->
-                                                                                    <!--                                                                                                    data-value="7:00 am">-->
-                                                                                    <!--                                                                                                    7:00 am-->
-                                                                                    <!--                                                                                                </li>-->
-                                                                                    <!--                                                                                                <li class="term_item"-->
-                                                                                    <!--                                                                                                    data-id="08:00"-->
-                                                                                    <!--                                                                                                    data-value="8:00 am">-->
-                                                                                    <!--                                                                                                    8:00 am-->
-                                                                                    <!--                                                                                                </li>-->
-                                                                                    <!--                                                                                                <li class="term_item"-->
-                                                                                    <!--                                                                                                    data-id="09:00"-->
-                                                                                    <!--                                                                                                    data-value="9:00 am">-->
-                                                                                    <!--                                                                                                    9:00 am-->
-                                                                                    <!--                                                                                                </li>-->
-                                                                                    <!--                                                                                                <li class="term_item"-->
-                                                                                    <!--                                                                                                    data-id="10:00"-->
-                                                                                    <!--                                                                                                    data-value="10:00 am">-->
-                                                                                    <!--                                                                                                    10:00 am-->
-                                                                                    <!--                                                                                                </li>-->
-                                                                                    <!--                                                                                                <li class="term_item"-->
-                                                                                    <!--                                                                                                    data-id="11:00"-->
-                                                                                    <!--                                                                                                    data-value="11:00 am">-->
-                                                                                    <!--                                                                                                    11:00 am-->
-                                                                                    <!--                                                                                                </li>-->
-                                                                                    <!--                                                                                                <li class="term_item"-->
-                                                                                    <!--                                                                                                    data-id="12:00"-->
-                                                                                    <!--                                                                                                    data-value="12:00 pm">-->
-                                                                                    <!--                                                                                                    12:00 pm-->
-                                                                                    <!--                                                                                                </li>-->
-                                                                                    <!--                                                                                                <li class="term_item"-->
-                                                                                    <!--                                                                                                    data-id="13:00"-->
-                                                                                    <!--                                                                                                    data-value="1:00 pm">-->
-                                                                                    <!--                                                                                                    1:00 pm-->
-                                                                                    <!--                                                                                                </li>-->
-                                                                                    <!--                                                                                                <li class="term_item"-->
-                                                                                    <!--                                                                                                    data-id="14:00"-->
-                                                                                    <!--                                                                                                    data-value="2:00 pm">-->
-                                                                                    <!--                                                                                                    2:00 pm-->
-                                                                                    <!--                                                                                                </li>-->
-                                                                                    <!--                                                                                                <li class="term_item"-->
-                                                                                    <!--                                                                                                    data-id="15:00"-->
-                                                                                    <!--                                                                                                    data-value="3:00 pm">-->
-                                                                                    <!--                                                                                                    3:00 pm-->
-                                                                                    <!--                                                                                                </li>-->
-                                                                                    <!--                                                                                                <li class="term_item"-->
-                                                                                    <!--                                                                                                    data-id="16:00"-->
-                                                                                    <!--                                                                                                    data-value="4:00 pm">-->
-                                                                                    <!--                                                                                                    4:00 pm-->
-                                                                                    <!--                                                                                                </li>-->
-                                                                                    <!--                                                                                                <li class="term_item"-->
-                                                                                    <!--                                                                                                    data-id="17:00"-->
-                                                                                    <!--                                                                                                    data-value="5:00 pm">-->
-                                                                                    <!--                                                                                                    5:00 pm-->
-                                                                                    <!--                                                                                                </li>-->
-                                                                                    <!--                                                                                                <li class="term_item"-->
-                                                                                    <!--                                                                                                    data-id="18:00"-->
-                                                                                    <!--                                                                                                    data-value="6:00 pm">-->
-                                                                                    <!--                                                                                                    6:00 pm-->
-                                                                                    <!--                                                                                                </li>-->
-                                                                                    <!--                                                                                                <li class="term_item"-->
-                                                                                    <!--                                                                                                    data-id="19:00"-->
-                                                                                    <!--                                                                                                    data-value="7:00 pm">-->
-                                                                                    <!--                                                                                                    7:00 pm-->
-                                                                                    <!--                                                                                                </li>-->
-                                                                                    <!--                                                                                                <li class="term_item"-->
-                                                                                    <!--                                                                                                    data-id="20:00"-->
-                                                                                    <!--                                                                                                    data-value="8:00 pm">-->
-                                                                                    <!--                                                                                                    8:00 pm-->
-                                                                                    <!--                                                                                                </li>-->
-                                                                                    <!--                                                                                                <li class="term_item"-->
-                                                                                    <!--                                                                                                    data-id="21:00"-->
-                                                                                    <!--                                                                                                    data-value="9:00 pm">-->
-                                                                                    <!--                                                                                                    9:00 pm-->
-                                                                                    <!--                                                                                                </li>-->
-                                                                                    <!--                                                                                                <li class="term_item"-->
-                                                                                    <!--                                                                                                    data-id="22:00"-->
-                                                                                    <!--                                                                                                    data-value="10:00 pm">-->
-                                                                                    <!--                                                                                                    10:00 pm-->
-                                                                                    <!--                                                                                                </li>-->
-                                                                                    <!--                                                                                                <li class="term_item"-->
-                                                                                    <!--                                                                                                    data-id="23:00"-->
-                                                                                    <!--                                                                                                    data-value="11:00 pm">-->
-                                                                                    <!--                                                                                                    11:00 pm-->
-                                                                                    <!--                                                                                                </li>-->
-                                                                                    <!--                                                                                            </ul>-->
-                                                                                    <!--                                                                                            <i class="fas fa-chevron-down"></i>-->
-                                                                                    <!--                                                                                        </div>-->
-                                                                                    <!--                                                                                    </div>-->
-                                                                                    <!--                                                                                </div>-->
 
-                                                                                    <div class="search-date is-active"
-                                                                                         data-inputfield="1"
-                                                                                         tabindex="0"
-                                                                                         data-active-0="1"
-                                                                                         data-title-0="Ելք">
-                                                                                        <i class="ti-calendar "></i><input
-                                                                                            type="text"
-                                                                                            class="search_date"
-                                                                                            id="date_to" name="dateTo"
-                                                                                            th:placeholder="#{main.dateto}">
-                                                                                    </div>
-                                                                                    <!--                                                                                <div class="input_select_field input_select_field_time_to  is-active"-->
-                                                                                    <!--                                                                                     data-name="time_to"-->
-                                                                                    <!--                                                                                     data-inputfield="1"-->
-                                                                                    <!--                                                                                     data-active-0="1" tabindex="0">-->
-                                                                                    <!--                                                                                    <div class="input_select_title">-->
-                                                                                    <!--                                                                                        <div class="input_select_title_value" th:text="#{main.endat}">-->
-                                                                                    <!--                                                                                            End at-->
-                                                                                    <!--                                                                                        </div>-->
-                                                                                    <!--                                                                                        <div class="input_select_wrapper">-->
-                                                                                    <!--                                                                                            <input type="text"-->
-                                                                                    <!--                                                                                                   class="input_select_input"-->
-                                                                                    <!--                                                                                                   name="time_to_label"-->
-                                                                                    <!--                                                                                                   value="12:00 am">-->
-                                                                                    <!--                                                                                            <input type="hidden"-->
-                                                                                    <!--                                                                                                   class="input_select_input_value"-->
-                                                                                    <!--                                                                                                   name="timeTo"-->
-                                                                                    <!--                                                                                                   value="00:00">-->
-                                                                                    <!--                                                                                            <ul class="input_select_list">-->
-                                                                                    <!--                                                                                                <li class="term_item term_item_selected"-->
-                                                                                    <!--                                                                                                    data-id="00:00"-->
-                                                                                    <!--                                                                                                    data-value="12:00 am">-->
-                                                                                    <!--                                                                                                    12:00 am-->
-                                                                                    <!--                                                                                                </li>-->
-                                                                                    <!--                                                                                                <li class="term_item"-->
-                                                                                    <!--                                                                                                    data-id="01:00"-->
-                                                                                    <!--                                                                                                    data-value="1:00 am">-->
-                                                                                    <!--                                                                                                    1:00 am-->
-                                                                                    <!--                                                                                                </li>-->
-                                                                                    <!--                                                                                                <li class="term_item"-->
-                                                                                    <!--                                                                                                    data-id="02:00"-->
-                                                                                    <!--                                                                                                    data-value="2:00 am">-->
-                                                                                    <!--                                                                                                    2:00 am-->
-                                                                                    <!--                                                                                                </li>-->
-                                                                                    <!--                                                                                                <li class="term_item"-->
-                                                                                    <!--                                                                                                    data-id="03:00"-->
-                                                                                    <!--                                                                                                    data-value="3:00 am">-->
-                                                                                    <!--                                                                                                    3:00 am-->
-                                                                                    <!--                                                                                                </li>-->
-                                                                                    <!--                                                                                                <li class="term_item"-->
-                                                                                    <!--                                                                                                    data-id="04:00"-->
-                                                                                    <!--                                                                                                    data-value="4:00 am">-->
-                                                                                    <!--                                                                                                    4:00 am-->
-                                                                                    <!--                                                                                                </li>-->
-                                                                                    <!--                                                                                                <li class="term_item"-->
-                                                                                    <!--                                                                                                    data-id="05:00"-->
-                                                                                    <!--                                                                                                    data-value="5:00 am">-->
-                                                                                    <!--                                                                                                    5:00 am-->
-                                                                                    <!--                                                                                                </li>-->
-                                                                                    <!--                                                                                                <li class="term_item"-->
-                                                                                    <!--                                                                                                    data-id="06:00"-->
-                                                                                    <!--                                                                                                    data-value="6:00 am">-->
-                                                                                    <!--                                                                                                    6:00 am-->
-                                                                                    <!--                                                                                                </li>-->
-                                                                                    <!--                                                                                                <li class="term_item"-->
-                                                                                    <!--                                                                                                    data-id="07:00"-->
-                                                                                    <!--                                                                                                    data-value="7:00 am">-->
-                                                                                    <!--                                                                                                    7:00 am-->
-                                                                                    <!--                                                                                                </li>-->
-                                                                                    <!--                                                                                                <li class="term_item"-->
-                                                                                    <!--                                                                                                    data-id="08:00"-->
-                                                                                    <!--                                                                                                    data-value="8:00 am">-->
-                                                                                    <!--                                                                                                    8:00 am-->
-                                                                                    <!--                                                                                                </li>-->
-                                                                                    <!--                                                                                                <li class="term_item"-->
-                                                                                    <!--                                                                                                    data-id="09:00"-->
-                                                                                    <!--                                                                                                    data-value="9:00 am">-->
-                                                                                    <!--                                                                                                    9:00 am-->
-                                                                                    <!--                                                                                                </li>-->
-                                                                                    <!--                                                                                                <li class="term_item"-->
-                                                                                    <!--                                                                                                    data-id="10:00"-->
-                                                                                    <!--                                                                                                    data-value="10:00 am">-->
-                                                                                    <!--                                                                                                    10:00 am-->
-                                                                                    <!--                                                                                                </li>-->
-                                                                                    <!--                                                                                                <li class="term_item"-->
-                                                                                    <!--                                                                                                    data-id="11:00"-->
-                                                                                    <!--                                                                                                    data-value="11:00 am">-->
-                                                                                    <!--                                                                                                    11:00 am-->
-                                                                                    <!--                                                                                                </li>-->
-                                                                                    <!--                                                                                                <li class="term_item"-->
-                                                                                    <!--                                                                                                    data-id="12:00"-->
-                                                                                    <!--                                                                                                    data-value="12:00 pm">-->
-                                                                                    <!--                                                                                                    12:00 pm-->
-                                                                                    <!--                                                                                                </li>-->
-                                                                                    <!--                                                                                                <li class="term_item"-->
-                                                                                    <!--                                                                                                    data-id="13:00"-->
-                                                                                    <!--                                                                                                    data-value="1:00 pm">-->
-                                                                                    <!--                                                                                                    1:00 pm-->
-                                                                                    <!--                                                                                                </li>-->
-                                                                                    <!--                                                                                                <li class="term_item"-->
-                                                                                    <!--                                                                                                    data-id="14:00"-->
-                                                                                    <!--                                                                                                    data-value="2:00 pm">-->
-                                                                                    <!--                                                                                                    2:00 pm-->
-                                                                                    <!--                                                                                                </li>-->
-                                                                                    <!--                                                                                                <li class="term_item"-->
-                                                                                    <!--                                                                                                    data-id="15:00"-->
-                                                                                    <!--                                                                                                    data-value="3:00 pm">-->
-                                                                                    <!--                                                                                                    3:00 pm-->
-                                                                                    <!--                                                                                                </li>-->
-                                                                                    <!--                                                                                                <li class="term_item"-->
-                                                                                    <!--                                                                                                    data-id="16:00"-->
-                                                                                    <!--                                                                                                    data-value="4:00 pm">-->
-                                                                                    <!--                                                                                                    4:00 pm-->
-                                                                                    <!--                                                                                                </li>-->
-                                                                                    <!--                                                                                                <li class="term_item"-->
-                                                                                    <!--                                                                                                    data-id="17:00"-->
-                                                                                    <!--                                                                                                    data-value="5:00 pm">-->
-                                                                                    <!--                                                                                                    5:00 pm-->
-                                                                                    <!--                                                                                                </li>-->
-                                                                                    <!--                                                                                                <li class="term_item"-->
-                                                                                    <!--                                                                                                    data-id="18:00"-->
-                                                                                    <!--                                                                                                    data-value="6:00 pm">-->
-                                                                                    <!--                                                                                                    6:00 pm-->
-                                                                                    <!--                                                                                                </li>-->
-                                                                                    <!--                                                                                                <li class="term_item"-->
-                                                                                    <!--                                                                                                    data-id="19:00"-->
-                                                                                    <!--                                                                                                    data-value="7:00 pm">-->
-                                                                                    <!--                                                                                                    7:00 pm-->
-                                                                                    <!--                                                                                                </li>-->
-                                                                                    <!--                                                                                                <li class="term_item"-->
-                                                                                    <!--                                                                                                    data-id="20:00"-->
-                                                                                    <!--                                                                                                    data-value="8:00 pm">-->
-                                                                                    <!--                                                                                                    8:00 pm-->
-                                                                                    <!--                                                                                                </li>-->
-                                                                                    <!--                                                                                                <li class="term_item"-->
-                                                                                    <!--                                                                                                    data-id="21:00"-->
-                                                                                    <!--                                                                                                    data-value="9:00 pm">-->
-                                                                                    <!--                                                                                                    9:00 pm-->
-                                                                                    <!--                                                                                                </li>-->
-                                                                                    <!--                                                                                                <li class="term_item"-->
-                                                                                    <!--                                                                                                    data-id="22:00"-->
-                                                                                    <!--                                                                                                    data-value="10:00 pm">-->
-                                                                                    <!--                                                                                                    10:00 pm-->
-                                                                                    <!--                                                                                                </li>-->
-                                                                                    <!--                                                                                                <li class="term_item"-->
-                                                                                    <!--                                                                                                    data-id="23:00"-->
-                                                                                    <!--                                                                                                    data-value="11:00 pm">-->
-                                                                                    <!--                                                                                                    11:00 pm-->
-                                                                                    <!--                                                                                                </li>-->
-                                                                                    <!--                                                                                            </ul>-->
-                                                                                    <!--                                                                                            <i class="fas fa-chevron-down"></i>-->
-                                                                                    <!--                                                                                        </div>-->
-                                                                                    <!--                                                                                    </div>-->
-                                                                                    <!--                                                                                </div>-->
-
-
-                                                                                    <!--                                                                                search-->
-                                                                                    <div class="search_guests_field is-active"
-                                                                                         data-active-0="1" tabindex="1">
-                                                                                        <i class="ti-user"></i>
-                                                                                        <div class="search_guests_title">
-                                                                                            <span th:text="#{main.guests}"></span>
-                                                                                            <span
-                                                                                                    class="search_guests_title_value">1</span>
+                                                                                        <div class="input_select_field input_select_field_guests is-active"
+                                                                                             data-name="guests[18]"
+                                                                                             data-inputfield="1"
+                                                                                             tabindex="0"
+                                                                                             data-active-0="1">
+                                                                                            <span class="select_guests_value">0</span>
+                                                                                            <span class="select_guests_title" th:text="#{main.children}">Երեխաներ</span>
+                                                                                            <span class="search_guests_plus btn-search-guests-change btn btn-secondary-outlined"
+                                                                                                  tabindex="0"><i
+                                                                                                    class="fas fa-plus"></i></span>
+                                                                                            <span class="search_guests_minus btn-search-guests-change btn btn-secondary-outlined"
+                                                                                                  tabindex="0"><i
+                                                                                                    class="fas fa-minus"></i></span>
+                                                                                            <input type="hidden"
+                                                                                                   class="select_guests_input_value"
+                                                                                                   name="guestsChildren"
+                                                                                                   value="0">
                                                                                         </div>
-                                                                                        <div class="search_guests_select_wrapper">
-
-                                                                                            <div class="input_select_field input_select_field_guests is-active"
-                                                                                                 data-name="guests[16]"
-                                                                                                 data-inputfield="1"
-                                                                                                 tabindex="0"
-                                                                                                 data-active-0="1">
-                                                                                                <span class="select_guests_value">1</span>
-                                                                                                <span class="select_guests_title"
-                                                                                                      th:text="#{main.adult}">Մեծահասակ</span>
-                                                                                                <span class="search_guests_plus btn-search-guests-change btn btn-secondary-outlined"
-                                                                                                      tabindex="0"><i
-                                                                                                        class="fas fa-plus"></i></span>
-                                                                                                <span class="search_guests_minus btn-search-guests-change btn btn-secondary-outlined"
-                                                                                                      tabindex="0"><i
-                                                                                                        class="fas fa-minus"></i></span>
-                                                                                                <input type="hidden"
-                                                                                                       class="select_guests_input_value"
-                                                                                                       name="guestsAdult"
-                                                                                                       value="0">
-                                                                                            </div>
-
-                                                                                            <div class="input_select_field input_select_field_guests is-active"
-                                                                                                 data-name="guests[18]"
-                                                                                                 data-inputfield="1"
-                                                                                                 tabindex="0"
-                                                                                                 data-active-0="1">
-                                                                                                <span class="select_guests_value">0</span>
-                                                                                                <span class="select_guests_title"
-                                                                                                      th:text="#{main.children}">Երեխաներ</span>
-                                                                                                <span class="search_guests_plus btn-search-guests-change btn btn-secondary-outlined"
-                                                                                                      tabindex="0"><i
-                                                                                                        class="fas fa-plus"></i></span>
-                                                                                                <span class="search_guests_minus btn-search-guests-change btn btn-secondary-outlined"
-                                                                                                      tabindex="0"><i
-                                                                                                        class="fas fa-minus"></i></span>
-                                                                                                <input type="hidden"
-                                                                                                       class="select_guests_input_value"
-                                                                                                       name="guestsChildren"
-                                                                                                       value="0">
-                                                                                            </div>
-                                                                                            <div class="search_guests_apply">
-                                                                                                <button id="search_guests_apply_btn"
-                                                                                                        class="btn button btn-primary"
-                                                                                                        th:text="#{signin.signin}">
-                                                                                                    Մուտք
-                                                                                                </button>
-                                                                                            </div>
+                                                                                        <div class="search_guests_apply">
+                                                                                            <button id="search_guests_apply_btn"
+                                                                                                    class="btn button btn-primary" th:text="#{signin.signin}">
+                                                                                                Մուտք
+                                                                                            </button>
                                                                                         </div>
-                                                                                    </div>
-
-                                                                                    <div class="submit">
-                                                                                        <button name="submit"
-                                                                                                class="btn button btn-primary btn-search"
-                                                                                                value="1"><i
-                                                                                                class="fas fa-search"></i>
-                                                                                            <span th:text="#{main.searcheall}"></span>
-                                                                                        </button>
                                                                                     </div>
                                                                                 </div>
 
+                                                                                <div class="submit">
+                                                                                    <button name="submit"
+                                                                                            class="btn button btn-primary btn-search"
+                                                                                            value="1"><i
+                                                                                            class="fas fa-search"></i>
+                                                                                        <span th:text="#{main.searcheall}"></span>
+                                                                                    </button>
+                                                                                </div>
+                                                                            </div>
 
-                                                                                <!--                                                                            <input type="hidden"-->
-                                                                                <!--                                                                                   name="request_search_results"-->
-                                                                                <!--                                                                                   value="1">-->
-                                                                                <!--                                                                            <input type="hidden"-->
-                                                                                <!--                                                                                   name="search_results_sort_by"-->
-                                                                                <!--                                                                                   value="title_asc">-->
-                                                                            </form>
-                                                                        </div>
+
+<!--                                                                            <input type="hidden"-->
+<!--                                                                                   name="request_search_results"-->
+<!--                                                                                   value="1">-->
+<!--                                                                            <input type="hidden"-->
+<!--                                                                                   name="search_results_sort_by"-->
+<!--                                                                                   value="title_asc">-->
+                                                                        </form>
                                                                     </div>
                                                                 </div>
-                                                                <div class="elementor-element elementor-element-e049260 elementor-widget elementor-widget-spacer"
-                                                                     data-id="e049260" data-element_type="widget"
-                                                                     data-widget_type="spacer.default">
-                                                                    <div class="elementor-widget-container">
-                                                                        <div class="elementor-spacer">
-                                                                            <div class="elementor-spacer-inner"></div>
-                                                                        </div>
+                                                            </div>
+                                                            <div class="elementor-element elementor-element-e049260 elementor-widget elementor-widget-spacer"
+                                                                 data-id="e049260" data-element_type="widget"
+                                                                 data-widget_type="spacer.default">
+                                                                <div class="elementor-widget-container">
+                                                                    <div class="elementor-spacer">
+                                                                        <div class="elementor-spacer-inner"></div>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -564,6 +548,7 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                        </div>
                                     </section>
                                     <section
                                             class="elementor-section elementor-top-section elementor-element elementor-element-5546389 elementor-section-stretched elementor-section-boxed elementor-section-height-default elementor-section-height-default"
@@ -678,7 +663,7 @@
                                             class="elementor-section elementor-top-section elementor-element elementor-element-6983c84 elementor-section-stretched elementor-section-boxed elementor-section-height-default elementor-section-height-default"
                                             data-id="6983c84" data-element_type="section"
                                             data-settings="{&quot;stretch_section&quot;:&quot;section-stretched&quot;}">
-                                        <div class="elementor-container elementor-column-gap-extended">
+                                        <div class="elementor-container elementor-column-gap-extended"       >
                                             <div class="elementor-row">
                                                 <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-de34ca6"
                                                      data-id="de34ca6" data-element_type="column">
@@ -695,8 +680,7 @@
                                                                             <div class="row">
 
 
-                                                                                <div class="col-md-4 col-sm-6 col-xs-12 list-item "
-                                                                                     th:each="raiting: ${ratings}">
+                                                                                <div class="col-md-4 col-sm-6 col-xs-12 list-item " th:each="raiting: ${ratings}">
 
                                                                                     <div class="tour-grid-v3 tour-item-style">
 
@@ -719,25 +703,32 @@
                                                                                                 <div class="flex-middle">
                                                                                                     <div class="tour-title-wrapper">
                                                                                                         <div class="post-total-rating">
-                                                                                                            <span class="post-total-rating-stars stars"
-                                                                                                                  th:each="star:${#numbers.sequence(1,raiting.product.rating)}">
-                                                                                                                <span
-                                                                                                                        th:class="${'star star-'+star}"
-                                                                                                                        th:attr="data-rating-val=${star}"><i
-                                                                                                                        class="fas fa-star"></i>
-                                                                                                                </span>
-                                                                                                            </span>
+                                                                                                            <span class="post-total-rating-stars stars"><span
+                                                                                                                    class="star star-1"
+                                                                                                                    data-rating-val="1"><i
+                                                                                                                    class="fas fa-star"></i></span><span
+                                                                                                                    class="star star-2"
+                                                                                                                    data-rating-val="2"><i
+                                                                                                                    class="fas fa-star"></i></span><span
+                                                                                                                    class="star star-3"
+                                                                                                                    data-rating-val="3"><i
+                                                                                                                    class="fas fa-star"></i></span><span
+                                                                                                                    class="star star-4"
+                                                                                                                    data-rating-val="4"><i
+                                                                                                                    class="fas fa-star"></i></span><span
+                                                                                                                    class="star star-5"
+                                                                                                                    data-rating-val="5"><i
+                                                                                                                    class="far fa-star"></i></span><span>
+                                                                                                                    </span></span>
                                                                                                         </div>
                                                                                                         <h3 class="title">
-                                                                                                            <a href=""
-                                                                                                               th:text="${raiting.getProduct().name}">Thames
+                                                                                                            <a href="" th:text="${raiting.getProduct().name}">Thames
                                                                                                                 24 Hour
                                                                                                                 River
                                                                                                                 Cruise</a>
                                                                                                         </h3>
                                                                                                         <div class="tour-address">
-                                                                                                            <i class="ti-location-pin"></i><span
-                                                                                                                th:text="${raiting.getProduct().address}">95
+                                                                                                            <i class="ti-location-pin" ></i><span th:text="${raiting.getProduct().address}">95
                                                                                                             Fleet St,
                                                                                                             London EC4Y
                                                                                                             1DH</span>
@@ -751,8 +742,7 @@
                                                                                                             <span class="tour_info_price_new"><span
                                                                                                                     class="currency_amount"
                                                                                                                     data-amount="45"><span
-                                                                                                                    class="currency_symbol">&#36;</span><span
-                                                                                                                    th:text="${raiting.price}"></span></span></span>
+                                                                                                                    class="currency_symbol">&#36;</span><span th:text="${raiting.price}"></span></span></span>
                                                                                                         </div>
                                                                                                     </div>
                                                                                                 </div>
@@ -760,7 +750,7 @@
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
-                                                                            </div>
+                                                                          </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -1416,8 +1406,7 @@
                                                      data-widget_type="heading.default">
                                                     <div class="elementor-widget-container">
                                                         <div class="elementor-heading-title elementor-size-default">©
-                                                            Copyright 2022 Overnight – Powerd By <a href="#">ITSpace
-                                                                Academy</a>
+                                                            Copyright 2022 Overnight – Powerd By <a href="#">ITSpace Academy</a>
                                                         </div>
                                                     </div>
                                                 </div>
