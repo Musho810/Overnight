@@ -1,7 +1,7 @@
 package am.itspace.overnight.controller;
 
 import am.itspace.overnight.entity.User;
-import am.itspace.overnight.exeption.DuplicateResourceException;
+import am.itspace.overnight.exception.DuplicateResourceException;
 import am.itspace.overnight.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;

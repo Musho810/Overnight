@@ -52,6 +52,13 @@
             <column name="status" type="ENUM('ACTIVE','BLOCKED','IN_PENDING')" defaultValue="IN_PENDING">
                 <constraints nullable="false"/>
             </column>
+            <column name="is_enabled" type="boolean">
+                <constraints nullable="false"/>
+            </column>
+            <column name="verify_token" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+
         </createTable>
         <createTable tableName="city_village">
             <column name="id" type="int" autoIncrement="true">
