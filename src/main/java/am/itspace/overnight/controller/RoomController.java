@@ -16,10 +16,7 @@ public class RoomController {
 
     private final RoomService roomService;
 
-    @GetMapping("room")
-    public String room(){
-        return "room";
-    }
+
 
     @GetMapping("/resultRoom/{id}")
     public String roomSinglePage(@PathVariable("id") int id, ModelMap modelMap){
