@@ -1,6 +1,7 @@
 package am.itspace.overnight.service;
 
 import am.itspace.overnight.entity.Product;
+
 import am.itspace.overnight.exception.ProductNotFoundException;
 import am.itspace.overnight.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
@@ -66,4 +67,5 @@ public class ProductService {
     public void deleteById(int productId) {
         productRepository.deleteById(productId);
     }
+
 }

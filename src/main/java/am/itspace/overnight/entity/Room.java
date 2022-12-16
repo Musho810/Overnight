@@ -22,6 +22,7 @@ public class Room {
     private Date startDate;
     private Date endDate;
     private int bedsCount;
+    private int bedsCountChildren;
     @Enumerated(value = EnumType.STRING)
     private Status roomStatus;
     @ManyToOne
