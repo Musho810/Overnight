@@ -1,4 +1,4 @@
-package am.itspace.overnight.exeption;
+package am.itspace.overnight.exception;
 
 public class DuplicateResourceException extends Exception {
 

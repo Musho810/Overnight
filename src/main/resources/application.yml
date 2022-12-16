@@ -24,7 +24,7 @@ spring:
 
 overnight:
   images:
-    folder: C:\\Users\\Hoso\\IdeaProjects\\Overnight\\images
+    folder: C:\Users\Toshiba\IdeaProjects\Overnight\images
 
 logging:
   logback:
@@ -32,7 +32,7 @@ logging:
       file-name-pattern: ${LOG_FILE}.%d{yyyy-MM-dd}.%i.gz # by date
       max-file-size: 10MB # by size
   file:
-    name: C:\Users\Hoso\IdeaProjects\Overnight\log\application.log
+    name: C:\Users\Toshiba\IdeaProjects\Overnight\log\application.log
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss}  %-5level %logger{36} - %msg%n"
     file: "%d{yyyy-MM-dd HH:mm:ss}  %-5level %logger{36} - %msg%n"
