@@ -3,7 +3,7 @@ package am.itspace.overnight.service;
 import am.itspace.overnight.entity.RoleUser;
 import am.itspace.overnight.entity.StatusSeller;
 import am.itspace.overnight.entity.User;
-import am.itspace.overnight.exeption.DuplicateResourceException;
+import am.itspace.overnight.exception.DuplicateResourceException;
 import am.itspace.overnight.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
