@@ -47,10 +47,10 @@
                 <constraints nullable="true"/>
             </column>
             <column name="role" type="ENUM('ADMIN','SELLER','CLIENT')" defaultValue="CLIENT">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
             <column name="status" type="ENUM('ACTIVE','BLOCKED','IN_PENDING')" defaultValue="IN_PENDING">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
             <column name="is_enabled" type="boolean">
                 <constraints nullable="false"/>
@@ -171,6 +171,9 @@
                 <constraints nullable="false"/>
             </column>
             <column name="product_id" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="beds_count_children" type="int">
                 <constraints nullable="false"/>
             </column>
         </createTable>
