@@ -337,14 +337,14 @@
                                     <div class="tour-grid tour-item-style">
                                         <div class="tour_info_price_discount">Save 5%</div>	<div class="inner">
                                         <div class="tour-image">
-                                            <a href="#">
+                                            <a th:href="@{'/resultRoom/' + ${resultRoom.id}}">
                                                 <div class="image-wrapper"><img width="740" height="500" src="../wp-content/uploads/2020/09/des-3-740x500.jpg" class="attachment-travlio-grid-thumbnail size-travlio-grid-thumbnail" alt=""></div></a>		</div>
                                         <div class="tour-content">
                                             <div class="tour-title-wrapper">
                                                 <div class="flex">
                                                     <div class="tour-title-inner">
-                                                        <div class="tour-address"><i class="ti-location-pin"></i><span th:text="${resultRoom.getProduct().address}">Ave, East Elmhurst, NY</span> </div>
-                                                        <h3 class="title"><a th:href="@{'/resultRoom/' + ${resultRoom.id}}" th:text="${resultRoom.getProduct().name}"></a> Architecture Yacht Cruise</a></h3>
+                                                        <div class="tour-address"><i class="ti-location-pin"></i><span th:text="${resultRoom.getProduct().address}"></span> </div>
+                                                        <h3 class="title"><a th:href="@{'/resultRoom/' + ${resultRoom.id}}" th:text="${resultRoom.getProduct().name}" ></a><br><span th:text="${resultRoom.product.cityVillage.name}"></span></a></h3>
                                                         <div class="post-total-rating">
                                                             <span class="post-total-rating-stars stars"><span class="star star-1" data-rating-val="1"><i class="fas fa-star"></i></span>
                                                                 <span class="star star-2" data-rating-val="2"><i class="fas fa-star"></i></span>

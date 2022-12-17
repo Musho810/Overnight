@@ -1,9 +1,7 @@
 package am.itspace.overnight.service;
-import am.itspace.overnight.entity.Product;
 import am.itspace.overnight.entity.Room;
 import am.itspace.overnight.repository.RoomRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
